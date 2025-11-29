@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smTIRF Event Annotation Tool</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: #4CAF50;
+            background: #f9f9f9;
+        }
+        
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #45a049;
+        }
+        
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #da190b;
+        }
+        
+        .btn-secondary {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #0b7dda;
+        }
+        
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background: #e68900;
+        }
+        
+        .btn-gray {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        .btn-gray:hover {
+            background: #d0d0d0;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn.active {
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-danger.active {
+            box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.3);
+        }
+        
+        .video-container {
+            position: relative;
+            display: inline-block;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        #videoCanvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        #annotationCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: crosshair;
+        }
+        
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .slider {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+        }
+        
+        input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .stat-item {
+            padding: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .region-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .region-item {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .region-item:hover {
+            border-color: #2196F3;
+            background: #f5f5f5;
+        }
+        
+        .region-item.selected {
+            border-color: #FFD700;
+            background: #fffbf0;
+        }
+        
+        .region-item.positive {
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .region-item.negative {
+            border-left: 4px solid #f44336;
+        }
+        
+        #chartContainer {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>smTIRF Event Annotation Tool</h1>
+        
+        <!-- Upload Section -->
+        <div class="section">
+            <div class="section-title">Upload TIFF Image Stack</div>
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                <input type="file" id="fileInput" accept=".tif,.tiff,image/tiff" onchange="uploadFile()">
+                <p>Click to upload TIFF file or drag and drop</p>
+            </div>
+            <div id="uploadStatus" style="margin-top: 10px;"></div>
+        </div>
+        
+        <!-- Video Player Section -->
+        <div id="playerSection" class="section hidden">
+            <div class="section-title">Video Player</div>
+            <div class="video-container" id="videoContainer">
+                <canvas id="videoCanvas"></canvas>
+                <canvas id="annotationCanvas"></canvas>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="togglePlay()">
+                        <span id="playIcon">▶</span> <span id="playText">Play</span>
+                    </button>
+                    <span id="frameInfo">Frame 1 / 1</span>
+                    <label>FPS: <input type="number" id="fpsInput" value="10" min="1" max="60" onchange="updateFPS()"></label>
+                </div>
+                <div class="slider">
+                    <input type="range" id="frameSlider" min="0" max="0" value="0" oninput="seekFrame(this.value)">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Annotation Controls -->
+        <div id="annotationSection" class="section hidden">
+            <div class="section-title">Click on Events</div>
+            <div class="info-box">
+                <strong>How it works:</strong> Click on the center of an event to create a 20-pixel radius circular mask. The system will extract pixel data from this region across ALL frames and show intensity over time.
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-primary" id="positiveBtn" onclick="setMode('positive')">
+                    ✓ Good smTIRF Events (<span id="positiveCount">0</span>)
+                </button>
+                <button class="btn btn-danger" id="negativeBtn" onclick="setMode('negative')">
+                    ✗ Bad Examples (<span id="negativeCount">0</span>)
+                </button>
+                <button class="btn btn-gray" onclick="setMode(null)">Navigate Mode</button>
+                <button class="btn btn-warning" onclick="deleteLastRegion()">🗑 Delete Last</button>
+                <button class="btn btn-danger" onclick="clearAllRegions()">Clear All</button>
+                <button class="btn btn-secondary" onclick="exportData()">
+                    💾 Export Time Series Data
+                </button>
+            </div>
+            
+            <div id="modeInfo" style="margin-top: 15px; color: #666;"></div>
+        </div>
+        
+        <!-- Intensity Graph -->
+        <div id="chartSection" class="section hidden">
+            <div class="section-title">Intensity Over Time (±20 seconds)</div>
+            <div id="chartContainer">
+                <canvas id="intensityChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Region List -->
+        <div id="regionListSection" class="section hidden">
+            <div class="section-title">Annotated Regions</div>
+            <div class="region-list" id="regionList"></div>
+        </div>
+        
+        <!-- Statistics -->
+        <div id="statsSection" class="section hidden">
+            <div class="section-title">Statistics</div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-label">Good Events</div>
+                    <div class="stat-value" style="color: #4CAF50;"><span id="statPositive">0</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Bad Examples</div>
+                    <div class="stat-value" style="color: #f44336;"><span id="statNegative">0</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Total Frames</div>
+                    <div class="stat-value"><span id="statFrames">0</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Mask Radius</div>
+                    <div class="stat-value">20 px</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>
