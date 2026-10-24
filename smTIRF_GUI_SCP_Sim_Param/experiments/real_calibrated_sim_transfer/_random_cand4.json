@@ -1,0 +1,47 @@
+[
+  {
+    "x": 221.0,
+    "y": 119.0,
+    "duration": 25,
+    "mean_intensity": 617.3939641647437,
+    "mean_circularity": 0.8224624489112081,
+    "max_displacement": 0.0,
+    "intensity_cv": 0.08992463608878398
+  },
+  {
+    "x": 264.04761904761904,
+    "y": 72.52380952380952,
+    "duration": 21,
+    "mean_intensity": 527.24666979438,
+    "mean_circularity": 0.7471030750752709,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.13476444607094698
+  },
+  {
+    "x": 192.41176470588235,
+    "y": 58.05882352941177,
+    "duration": 17,
+    "mean_intensity": 486.642419938563,
+    "mean_circularity": 0.7780127357029947,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.092065120976653
+  },
+  {
+    "x": 282.2241379310345,
+    "y": 168.0,
+    "duration": 58,
+    "mean_intensity": 562.6633847814771,
+    "mean_circularity": 0.7979198413752251,
+    "max_displacement": 1.0,
+    "intensity_cv": 0.10965781034088853
+  },
+  {
+    "x": 199.3939393939394,
+    "y": 114.0,
+    "duration": 33,
+    "mean_intensity": 714.2099560668515,
+    "mean_circularity": 0.8035168540119731,
+    "max_displacement": 1.0,
+    "intensity_cv": 0.08040560844133408
+  }
+]

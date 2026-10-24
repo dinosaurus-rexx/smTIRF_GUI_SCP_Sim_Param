@@ -1,0 +1,83 @@
+[
+  {
+    "x": 277.4117647058824,
+    "y": 67.97058823529412,
+    "duration": 34,
+    "mean_intensity": 443.23487816927076,
+    "mean_circularity": 0.6951540863241074,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.08159694596131396
+  },
+  {
+    "x": 135.56756756756758,
+    "y": 156.04054054054055,
+    "duration": 74,
+    "mean_intensity": 470.1478850228687,
+    "mean_circularity": 0.7440077358316038,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.10964430743947239
+  },
+  {
+    "x": 505.82307692307694,
+    "y": 69.0,
+    "duration": 130,
+    "mean_intensity": 511.14409166198567,
+    "mean_circularity": 0.7882791192795954,
+    "max_displacement": 1.0,
+    "intensity_cv": 0.08648251197540449
+  },
+  {
+    "x": 429.0169491525424,
+    "y": 104.10169491525424,
+    "duration": 59,
+    "mean_intensity": 464.5174365023024,
+    "mean_circularity": 0.7708854768860446,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.09043401726169782
+  },
+  {
+    "x": 284.0625,
+    "y": 210.6875,
+    "duration": 32,
+    "mean_intensity": 393.3359934677707,
+    "mean_circularity": 0.7333089739079959,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.12143299060787364
+  },
+  {
+    "x": 408.8494623655914,
+    "y": 21.043010752688172,
+    "duration": 93,
+    "mean_intensity": 484.4507472364057,
+    "mean_circularity": 0.7594876751989581,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.07235376365665759
+  },
+  {
+    "x": 282.27941176470586,
+    "y": 168.01470588235293,
+    "duration": 68,
+    "mean_intensity": 584.8868294124276,
+    "mean_circularity": 0.7988578911459661,
+    "max_displacement": 1.4142135623730951,
+    "intensity_cv": 0.1311971563193579
+  },
+  {
+    "x": 199.36363636363637,
+    "y": 114.0,
+    "duration": 33,
+    "mean_intensity": 713.897762214601,
+    "mean_circularity": 0.8025567074155178,
+    "max_displacement": 1.0,
+    "intensity_cv": 0.08067295407346078
+  },
+  {
+    "x": 418.0,
+    "y": 154.0,
+    "duration": 47,
+    "mean_intensity": 465.0521505852829,
+    "mean_circularity": 0.7437460318666108,
+    "max_displacement": 0.0,
+    "intensity_cv": 0.09107499978103026
+  }
+]

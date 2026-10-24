@@ -1,0 +1,111 @@
+digraph smtirf_pipeline {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=11, compound=true,
+         labelloc=t, label="smTIRF SCP pipeline — scripts, files, and the six evaluation designs"];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9];
+  edge  [fontname="Helvetica", fontsize=8, color="#4D4D4D"];
+  subgraph cluster_1 {
+    label="1  Real data"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    raw [label="realdata/vid.tiff\ndual-channel · 2×256×512 · 501 frames · 16-bit", fillcolor="#E7F0F8", color="#0072B2"];
+    prep [label="Parameter_opt/prepare_real_movie.py\npick the annotated channel (median SNR ≈ 11)", fillcolor="#FDF0E6", color="#D55E00"];
+    ch1 [label="realdata/vid_ch1.tiff\n(T, Y, X) single-channel stack", fillcolor="#E7F0F8", color="#0072B2"];
+    gui [label="GUI2/smTIRF_tool.py\nFlask annotation GUI", fillcolor="#FDF0E6", color="#D55E00"];
+    labels [label="coord.npy [y, x]  +  class.npy\n243 target · 91 off-target · moving", fillcolor="#E7F0F8", color="#0072B2"];
+  }
+  subgraph cluster_2 {
+    label="2  Simulator — measure → build → judge"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    meas_full [label="measure_real_movie.py\nwhole-movie statistics", fillcolor="#FDF0E6", color="#D55E00"];
+    ref_full [label="config/real_movie_reference.json\ncalibration targets", fillcolor="#E7F0F8", color="#0072B2"];
+    gen_full [label="generate_dataset.py\nconfig/real_calibrated.yaml · seeded", fillcolor="#FDF0E6", color="#D55E00"];
+    ds_full [label="dataset/{train,val}/ + manifest.json\nmovies · (x,y) label JSON · [y,x] npy", fillcolor="#E7F0F8", color="#0072B2"];
+    gates [label="validate_against_real.py\ngates T1–T5, T7  ·  tests/test_contracts.py", fillcolor="#F1F1F1", color="#5A5A5A"];
+    meas_band [label="measure_real_movie.py --band 0 256\nleak-free: validation-band labels only", fillcolor="#FDF0E6", color="#D55E00"];
+    ref_band [label="real_movie_reference_valband.json\ntest band influenced nothing", fillcolor="#E7F0F8", color="#0072B2"];
+    gen_band [label="generate_dataset.py\n--config real_calibrated_valband.yaml\nsame seeds as the full arm", fillcolor="#FDF0E6", color="#D55E00"];
+    ds_band [label="dataset_valband/\nleak-free simulated movies", fillcolor="#E7F0F8", color="#0072B2"];
+    ds_bt [label="generate_dataset_bt.py → dataset_bt/\nlegacy simulator · no real calibration\nkept only to reproduce the baseline", fillcolor="#E7F0F8", color="#0072B2"];
+  }
+  subgraph cluster_3 {
+    label="3  SCP detector"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    bp [label="bandpass\n− Gaussian σ=8, clip, min–max", fillcolor="#F3EDF7", color="#8E5BA6"];
+    log [label="LoG  blob_log\nmin_sigma … max_sigma, threshold", fillcolor="#F3EDF7", color="#8E5BA6"];
+    link [label="KD-tree linking\nmax_displacement", fillcolor="#F3EDF7", color="#8E5BA6"];
+    cls [label="event classification\ncircularity · min_pulsation_frames · CV", fillcolor="#F3EDF7", color="#8E5BA6"];
+    nms [label="event NMS\n3.0 px duplicate suppression", fillcolor="#F3EDF7", color="#8E5BA6"];
+    events [label="events JSON\n(x, y) per selected event", fillcolor="#E7F0F8", color="#0072B2"];
+  }
+  subgraph cluster_4 {
+    label="4  Optimization"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    opt [label="SCP_parametrizer_002.py\nOptuna TPE search\n7 parameters · seed 42 · per-run timeout", fillcolor="#EAF4F0", color="#009E73"];
+    scorer [label="scorer: greedy 1:1 match, |dx|,|dy| ≤ 3 px\nrecall · precision · F1 (β = 1)", fillcolor="#EAF4F0", color="#009E73"];
+    topk [label="top-K candidates\nK = 6 … 10", fillcolor="#EAF4F0", color="#009E73"];
+    method [label="METHOD switch\nsim_only | sim_guided_real | direct_real", fillcolor="#EAF4F0", color="#009E73"];
+  }
+  subgraph cluster_5 {
+    label="5  Evaluation designs"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    arm_a [label="(a)  direct on real\nsearch   real train [0,170)\nselect    real val   [170,340)\nreport   real test  [340,512)\n\n100+ real detector runs", fillcolor="#EFF6EA", color="#5C8A2E"];
+    arm_b [label="(b)  sim only\nsearch   simulated train\nselect    simulated val\nreport   real, scored once\n\nclassic design, completeness", fillcolor="#EFF6EA", color="#5C8A2E"];
+    arm_c [label="(c)  sim-guided  ← headline\nsearch   dataset/ (simulated)\nselect    real val   [0,256)\nreport   real test  [256,512)\n\n30 trials · K=6 · 6 real runs", fillcolor="#EFF6EA", color="#5C8A2E"];
+    arm_f [label="(f)  sim-guided, leak-free\nsimulator calibrated on the\nvalidation band only\n(dataset_valband/)\n\nsame search + selection as (c)", fillcolor="#EFF6EA", color="#5C8A2E"];
+    arm_d [label="(d)  shape transfer +\n      threshold recalibration\nsearch   simulated (7 params)\nthen      real threshold grid\n              0.20 / 0.26 / 0.32\nselect on real val band", fillcolor="#EFF6EA", color="#5C8A2E"];
+    arm_e [label="(e)  random-search control\n6 uniform draws · no simulator\nsame scorer, bands, selection,\nreal-run budget as (c)\n\nisolates the simulator's value", fillcolor="#EFF6EA", color="#5C8A2E"];
+  }
+  subgraph cluster_6 {
+    label="6  Held-out results"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    r_a [label="test F1  0.800\nrecall 94.9% · precision 69.2%\ntrain 0.839 · val 0.806\n→ reference config 0.847", fillcolor="#F1F1F1", color="#5A5A5A"];
+    r_b [label="real, scored once\nreported for completeness", fillcolor="#F1F1F1", color="#5A5A5A"];
+    r_c [label="test F1  0.7143\nrecall 90.1% · precision 59.2%\nvs 0.256 legacy simulator\n(2.8× · above the 0.70 bar)", fillcolor="#F1F1F1", color="#5A5A5A"];
+    r_f [label="test F1  0.6852\nrecall 66.7% · precision 70.5%\ngap to (c) = 0.029 F1\n— an upper bound on leakage", fillcolor="#F1F1F1", color="#5A5A5A"];
+    r_d [label="real threshold 0.20\nF1 0.699 in 184 s\n0.15 → 0.213 (blobs hijack\ntracking) · 0.12 times out", fillcolor="#F1F1F1", color="#5A5A5A"];
+    r_e [label="test F1  0.4505\n6 random configs + real selection\n0.5591 picking by simulated\nscore alone · simulator = +0.26", fillcolor="#F1F1F1", color="#5A5A5A"];
+  }
+  subgraph cluster_7 {
+    label="7  Artifacts"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    artifacts [label="experiments/<arm>/optimization_results*.json   →   unified_benchmark_rescoring/{unified_benchmark,plot_unified,rescore_all}.py\none scorer for every quoted number  ·  output/*.csv  ·  output/figures/*.png  ·  figures/make_figure1.py", fillcolor="#F1F1F1", color="#5A5A5A"];
+  }
+  raw -> prep;
+  prep -> ch1;
+  ch1 -> gui;
+  gui -> labels;
+  ch1 -> meas_full [label="pixels: whole frame"];
+  labels -> meas_full [label="labels: whole movie"];
+  labels -> meas_band [label="labels: x < 256 only", style=dashed, color="#8A8A8A"];
+  meas_full -> ref_full;
+  ref_full -> gen_full;
+  gen_full -> ds_full;
+  ds_full -> gates;
+  meas_band -> ref_band;
+  ref_band -> gen_band;
+  gen_band -> ds_band;
+  ds_band -> gates [style=dashed, color="#8A8A8A"];
+  ds_full -> bp [label="simulated"];
+  ds_band -> bp [label="leak-free", style=dashed, color="#8A8A8A"];
+  ds_bt -> bp [label="baseline", style=dashed, color="#8A8A8A"];
+  ch1 -> bp [label="the real movie"];
+  bp -> log;
+  log -> link;
+  link -> cls;
+  cls -> nms;
+  nms -> events;
+  events -> scorer [label="detections"];
+  labels -> scorer [label="ground truth, sliced by x band", style=dashed, color="#8A8A8A"];
+  scorer -> opt [label="F1 objective"];
+  opt -> log [label="7 parameters per trial", style=dashed, color="#8A8A8A"];
+  opt -> topk [label="ranked trials"];
+  topk -> method;
+  method -> arm_a;
+  method -> arm_b;
+  method -> arm_c;
+  method -> arm_f;
+  method -> arm_d;
+  method -> arm_e [label="no simulator", style=dashed, color="#8A8A8A"];
+  arm_a -> r_a;
+  arm_b -> r_b;
+  arm_c -> r_c;
+  arm_f -> r_f;
+  arm_d -> r_d;
+  arm_e -> r_e;
+  r_a -> artifacts;
+  r_c -> artifacts;
+  r_f -> artifacts;
+  r_e -> artifacts;
+}

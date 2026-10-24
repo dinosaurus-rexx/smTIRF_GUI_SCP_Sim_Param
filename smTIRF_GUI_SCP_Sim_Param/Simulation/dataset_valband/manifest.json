@@ -1,0 +1,438 @@
+{
+  "meta": {
+    "generator": "Simulation/simulate.py",
+    "driver": "Simulation/generate_dataset.py",
+    "config_path": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\config\\real_calibrated_valband.yaml",
+    "calibrated_against": "BachelorThesis-FRETAlgorithms/realdata/vid_ch1.tiff",
+    "reference": "Simulation/config/real_movie_reference.json",
+    "python": "3.12.8",
+    "numpy": "2.4.3",
+    "train_seeds": [
+      0,
+      1,
+      2
+    ],
+    "val_seeds": [
+      1000,
+      1001
+    ],
+    "resolved_config": {
+      "global_settings": {
+        "n_frames": 501,
+        "height": 256,
+        "width": 512,
+        "dtype": "uint16",
+        "psf_sigma": 1.55,
+        "gain_adu_per_photon": 5.0,
+        "read_noise_adu": 3.8,
+        "saturation": 65535
+      },
+      "background": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_std": 5.46,
+        "smooth_sigma": 12.6,
+        "drift_knots": 4,
+        "drift_mean_std": 4.1
+      },
+      "placement": {
+        "min_distance": 3.5,
+        "soft_distance": 6.0,
+        "soft_gamma": 3.0,
+        "margin": 2.0
+      },
+      "target": {
+        "activate": true,
+        "display_name": "Target molecule",
+        "count": 264,
+        "params": {
+          "peak_amplitude_median": 120.0,
+          "peak_amplitude_sigma_log": 0.36,
+          "tau_on": 350,
+          "tau_off": 115.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "off_target": {
+        "activate": true,
+        "display_name": "Off-target spot",
+        "count": 98,
+        "params": {
+          "psf_sigma": 1.63,
+          "peak_amplitude_median": 93.4,
+          "peak_amplitude_sigma_log": 0.047,
+          "tau_on": 120.0,
+          "tau_off": 265.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "unannotated": {
+        "activate": true,
+        "display_name": "Unannotated emitter (unlabelled clutter)",
+        "count": 500,
+        "params": {
+          "peak_amplitude_median": 70.0,
+          "peak_amplitude_sigma_log": 0.25,
+          "tau_on": 90.0,
+          "tau_off": 200.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "moving": {
+        "activate": false,
+        "display_name": "Moving spot",
+        "count": 0,
+        "params": {
+          "peak_amplitude_median": 120.0,
+          "peak_amplitude_sigma_log": 0.5,
+          "tau_on": 0.0,
+          "tau_off": 1.0,
+          "tau_bleach": 60.0,
+          "bleach_shape": 1.0,
+          "already_active_fraction": 0.2,
+          "activation_tau": 150.0,
+          "on_amplitude_cv": 0.2,
+          "step_size": 1.0
+        }
+      }
+    },
+    "records": [
+      {
+        "split": "train",
+        "seed": 0,
+        "tif": "dataset_valband\\train\\rep0.tif"
+      },
+      {
+        "split": "train",
+        "seed": 1,
+        "tif": "dataset_valband\\train\\rep1.tif"
+      },
+      {
+        "split": "train",
+        "seed": 2,
+        "tif": "dataset_valband\\train\\rep2.tif"
+      },
+      {
+        "split": "val",
+        "seed": 1000,
+        "tif": "dataset_valband\\val\\rep1000.tif"
+      },
+      {
+        "split": "val",
+        "seed": 1001,
+        "tif": "dataset_valband\\val\\rep1001.tif"
+      }
+    ]
+  },
+  "train": [
+    {
+      "seed": 0,
+      "tif": "dataset_valband\\train\\rep0.tif",
+      "positive": "dataset_valband\\train\\rep0_positive.json",
+      "negative": "dataset_valband\\train\\rep0_negative.json",
+      "coord_npy": "dataset_valband\\train\\rep0_coord.npy",
+      "class_npy": "dataset_valband\\train\\rep0_class.npy",
+      "n_positive": 264,
+      "n_negative": 98,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 264,
+          "peak_amplitude_median": 122.39058788891509,
+          "peak_amplitude_iqr": [
+            97.27394538412591,
+            154.89786914120933
+          ],
+          "blink_duty_realised": 0.7611292566382387,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.7611292566382387,
+          "overall_duty_median": 0.8323353293413174,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 98,
+          "peak_amplitude_median": 93.22152774264842,
+          "peak_amplitude_iqr": [
+            90.74286976343626,
+            96.20138418507975
+          ],
+          "blink_duty_realised": 0.3255122408244735,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3255122408244735,
+          "overall_duty_median": 0.27445109780439125,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 69.27257010489393,
+          "peak_amplitude_iqr": [
+            58.76414349078364,
+            82.59952280714904
+          ],
+          "blink_duty_realised": 0.3064710578842315,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3064710578842315,
+          "overall_duty_median": 0.281437125748503,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1000000000000005
+      }
+    },
+    {
+      "seed": 1,
+      "tif": "dataset_valband\\train\\rep1.tif",
+      "positive": "dataset_valband\\train\\rep1_positive.json",
+      "negative": "dataset_valband\\train\\rep1_negative.json",
+      "coord_npy": "dataset_valband\\train\\rep1_coord.npy",
+      "class_npy": "dataset_valband\\train\\rep1_class.npy",
+      "n_positive": 264,
+      "n_negative": 98,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 264,
+          "peak_amplitude_median": 119.7680883803398,
+          "peak_amplitude_iqr": [
+            95.52364884981274,
+            151.69604123515973
+          ],
+          "blink_duty_realised": 0.7493875884594448,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.7493875884594446,
+          "overall_duty_median": 0.8003992015968064,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 98,
+          "peak_amplitude_median": 92.92904459132546,
+          "peak_amplitude_iqr": [
+            90.76716672382591,
+            95.543277554302
+          ],
+          "blink_duty_realised": 0.28958409711189864,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.28958409711189864,
+          "overall_duty_median": 0.25349301397205587,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 71.3538214468326,
+          "peak_amplitude_iqr": [
+            60.370692406991566,
+            82.58321615202479
+          ],
+          "blink_duty_realised": 0.32744111776447105,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.32744111776447105,
+          "overall_duty_median": 0.3193612774451098,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1
+      }
+    },
+    {
+      "seed": 2,
+      "tif": "dataset_valband\\train\\rep2.tif",
+      "positive": "dataset_valband\\train\\rep2_positive.json",
+      "negative": "dataset_valband\\train\\rep2_negative.json",
+      "coord_npy": "dataset_valband\\train\\rep2_coord.npy",
+      "class_npy": "dataset_valband\\train\\rep2_class.npy",
+      "n_positive": 264,
+      "n_negative": 98,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 264,
+          "peak_amplitude_median": 123.31625919137304,
+          "peak_amplitude_iqr": [
+            97.86922409862433,
+            158.1108122521289
+          ],
+          "blink_duty_realised": 0.7551639145950523,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.7551639145950523,
+          "overall_duty_median": 0.8153692614770459,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 98,
+          "peak_amplitude_median": 92.60906692801599,
+          "peak_amplitude_iqr": [
+            90.32341940572023,
+            95.60270606019564
+          ],
+          "blink_duty_realised": 0.28634567599494887,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.28634567599494887,
+          "overall_duty_median": 0.25848303393213573,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 69.57767842236596,
+          "peak_amplitude_iqr": [
+            58.48444243760778,
+            82.6843938802434
+          ],
+          "blink_duty_realised": 0.3140119760479042,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.31401197604790415,
+          "overall_duty_median": 0.3003992015968064,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1
+      }
+    }
+  ],
+  "val": [
+    {
+      "seed": 1000,
+      "tif": "dataset_valband\\val\\rep1000.tif",
+      "positive": "dataset_valband\\val\\rep1000_positive.json",
+      "negative": "dataset_valband\\val\\rep1000_negative.json",
+      "coord_npy": "dataset_valband\\val\\rep1000_coord.npy",
+      "class_npy": "dataset_valband\\val\\rep1000_class.npy",
+      "n_positive": 264,
+      "n_negative": 98,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 264,
+          "peak_amplitude_median": 124.32774963910418,
+          "peak_amplitude_iqr": [
+            95.31116975085686,
+            156.36370497561362
+          ],
+          "blink_duty_realised": 0.736254763200871,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.736254763200871,
+          "overall_duty_median": 0.7714570858283434,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 98,
+          "peak_amplitude_median": 93.73454479858347,
+          "peak_amplitude_iqr": [
+            91.25805895679117,
+            96.79335682947075
+          ],
+          "blink_duty_realised": 0.26550979673306446,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.2655097967330645,
+          "overall_duty_median": 0.2345309381237525,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 69.55749542008031,
+          "peak_amplitude_iqr": [
+            58.538477989159404,
+            82.4969663685531
+          ],
+          "blink_duty_realised": 0.30642315369261475,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.30642315369261475,
+          "overall_duty_median": 0.28542914171656686,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1000000000000005
+      }
+    },
+    {
+      "seed": 1001,
+      "tif": "dataset_valband\\val\\rep1001.tif",
+      "positive": "dataset_valband\\val\\rep1001_positive.json",
+      "negative": "dataset_valband\\val\\rep1001_negative.json",
+      "coord_npy": "dataset_valband\\val\\rep1001_coord.npy",
+      "class_npy": "dataset_valband\\val\\rep1001_class.npy",
+      "n_positive": 264,
+      "n_negative": 98,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 264,
+          "peak_amplitude_median": 122.88265805183545,
+          "peak_amplitude_iqr": [
+            96.95126120865001,
+            151.9716775011408
+          ],
+          "blink_duty_realised": 0.7250272182906914,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.7250272182906914,
+          "overall_duty_median": 0.7445109780439122,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 98,
+          "peak_amplitude_median": 93.4004731379591,
+          "peak_amplitude_iqr": [
+            89.73518578462037,
+            96.25898760663374
+          ],
+          "blink_duty_realised": 0.2830665200211821,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.28306652002118216,
+          "overall_duty_median": 0.26047904191616766,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 69.12985482164054,
+          "peak_amplitude_iqr": [
+            59.34001647176989,
+            81.7796385068981
+          ],
+          "blink_duty_realised": 0.30998003992015966,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3099800399201597,
+          "overall_duty_median": 0.29940119760479045,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1
+      }
+    }
+  ]
+}

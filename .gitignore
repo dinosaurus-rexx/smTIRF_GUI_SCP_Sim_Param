@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Simulated movies: seeded, so regenerable byte-for-byte, and ~2.5 GB in total.
+# Their labels, coord/class .npy and manifest.json stay tracked (<1 MB) as provenance.
+*.tif
+*.tiff
+
+# Per-trial detector output that the tuner and the Simulation scripts write next to
+# themselves. Overwritten on every run.
+smTIRF_GUI_SCP_Sim_Param/Parameter_opt/_scp_*.json
+smTIRF_GUI_SCP_Sim_Param/Simulation/_validate_events_*.json
+smTIRF_GUI_SCP_Sim_Param/Simulation/_real_reference_events.json
+
+# ...except this one: experiments/sim_vs_real_transfer_comparison/run_transfer.py
+# (preflight step 2) reads it back from Parameter_opt/.
+!smTIRF_GUI_SCP_Sim_Param/Parameter_opt/_scp_detected_direct_t22.json

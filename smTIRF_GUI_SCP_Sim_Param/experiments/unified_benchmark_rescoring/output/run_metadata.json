@@ -1,0 +1,21 @@
+{
+  "scorer": "greedy 1:1, per-axis margin 3 px (SCP_parametrizer_002.compute_metrics)",
+  "match_margin_px": 3,
+  "fbeta": 1.0,
+  "region": "whole movie, columns 0-512",
+  "x_band": [
+    0,
+    512
+  ],
+  "annotations": {
+    "target": 243,
+    "off_target": 91
+  },
+  "annotations_whole_movie": 334,
+  "labels": {
+    "coord": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\BachelorThesis-FRETAlgorithms\\realdata\\coord.npy",
+    "class": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\BachelorThesis-FRETAlgorithms\\realdata\\class.npy"
+  },
+  "detection_arrays": "c:\\Users\\NahuelJimenezPol\\Desktop\\Const\\BachelorThesis-FRETAlgorithms\\results\\{alg}\\{detections,selections}\\rep1.npy",
+  "false_positive_rule": "every detection not matched to a target annotation"
+}

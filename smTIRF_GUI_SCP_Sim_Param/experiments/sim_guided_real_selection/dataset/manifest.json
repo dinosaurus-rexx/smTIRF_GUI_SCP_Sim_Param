@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "frames": 50
+  },
+  "train": [
+    {
+      "seed": 0,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep0.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep0_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep0_negative.json",
+      "frames": 50,
+      "noise_profile": "mid",
+      "snr": 0.3329188339158282,
+      "num_positive": 170,
+      "num_negative": 30
+    },
+    {
+      "seed": 1,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep1.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep1_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep1_negative.json",
+      "frames": 50,
+      "noise_profile": "mid",
+      "snr": 0.3329188339158282,
+      "num_positive": 170,
+      "num_negative": 30
+    },
+    {
+      "seed": 2,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep2.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep2_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\real_run_results\\dataset\\train\\rep2_negative.json",
+      "frames": 50,
+      "noise_profile": "mid",
+      "snr": 0.3329188339158282,
+      "num_positive": 170,
+      "num_negative": 30
+    }
+  ],
+  "val": []
+}

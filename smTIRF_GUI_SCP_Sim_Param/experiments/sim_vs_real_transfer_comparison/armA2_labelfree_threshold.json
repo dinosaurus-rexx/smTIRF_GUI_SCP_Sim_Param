@@ -1,0 +1,155 @@
+{
+  "arm": "A2",
+  "description": "sim shape params + intensity_threshold calibrated on real PIXELS only (unsupervised); distinct from arm A proper",
+  "source_trial": 25,
+  "sim_fbeta": 0.7696353843280379,
+  "shape_params_from_sim": {
+    "min_sigma": 1.2925700706118992,
+    "max_sigma": 2.289883614632521,
+    "circular_threshold": 0.46136121079796766,
+    "max_displacement": 3.629085792705363,
+    "min_pulsation_frames": 5,
+    "intensity_variation_threshold": 0.08237735731861562
+  },
+  "sim_threshold": 0.05053357407391034,
+  "calibration": {
+    "criterion": "match mean blob density (blobs per 1000 px) of the sim at its own threshold",
+    "note": "bisected to match the sim's blob density; achieved 1.561 vs target 1.565 (0.3% off)",
+    "target_density_per_1000px": 1.565,
+    "sim_movies": [
+      "rep0.tif",
+      "rep1.tif",
+      "rep2.tif"
+    ],
+    "frames_sampled_per_movie": 10,
+    "sweep": [
+      {
+        "threshold": 0.6,
+        "density_per_1000px": 0.0,
+        "blobs_per_frame": 0.0
+      },
+      {
+        "threshold": 0.5,
+        "density_per_1000px": 0.0015,
+        "blobs_per_frame": 0.2
+      },
+      {
+        "threshold": 0.4,
+        "density_per_1000px": 0.016,
+        "blobs_per_frame": 2.1
+      },
+      {
+        "threshold": 0.32,
+        "density_per_1000px": 0.0671,
+        "blobs_per_frame": 8.8
+      },
+      {
+        "threshold": 0.25,
+        "density_per_1000px": 0.1686,
+        "blobs_per_frame": 22.1
+      },
+      {
+        "threshold": 0.2,
+        "density_per_1000px": 0.3357,
+        "blobs_per_frame": 44.0
+      },
+      {
+        "threshold": 0.15,
+        "density_per_1000px": 0.5867,
+        "blobs_per_frame": 76.9
+      },
+      {
+        "threshold": 0.1,
+        "density_per_1000px": 0.9346,
+        "blobs_per_frame": 122.5
+      },
+      {
+        "threshold": 0.07,
+        "density_per_1000px": 1.1795,
+        "blobs_per_frame": 154.6
+      },
+      {
+        "threshold": 0.05,
+        "density_per_1000px": 1.5121,
+        "blobs_per_frame": 198.2
+      },
+      {
+        "threshold": 0.035,
+        "density_per_1000px": 2.8015,
+        "blobs_per_frame": 367.2
+      },
+      {
+        "threshold": 0.0425,
+        "density_per_1000px": 1.8585,
+        "blobs_per_frame": 243.6
+      },
+      {
+        "threshold": 0.04625,
+        "density_per_1000px": 1.6556,
+        "blobs_per_frame": 217.0
+      },
+      {
+        "threshold": 0.04813,
+        "density_per_1000px": 1.5717,
+        "blobs_per_frame": 206.0
+      },
+      {
+        "threshold": 0.04906,
+        "density_per_1000px": 1.5388,
+        "blobs_per_frame": 201.7
+      },
+      {
+        "threshold": 0.04859,
+        "density_per_1000px": 1.5541,
+        "blobs_per_frame": 203.7
+      },
+      {
+        "threshold": 0.04836,
+        "density_per_1000px": 1.561,
+        "blobs_per_frame": 204.6
+      }
+    ]
+  },
+  "calibrated_threshold": 0.048359375,
+  "parameters": {
+    "min_sigma": 1.2925700706118992,
+    "max_sigma": 2.289883614632521,
+    "intensity_threshold": 0.048359375,
+    "circular_threshold": 0.46136121079796766,
+    "max_displacement": 3.629085792705363,
+    "min_pulsation_frames": 5,
+    "intensity_variation_threshold": 0.08237735731861562
+  },
+  "wall_clock_s": 203.5,
+  "timed_out": false,
+  "success": true,
+  "match_margin": 3,
+  "use_bandpass": true,
+  "result": "completed",
+  "test_x256_512": {
+    "fbeta": 0.6772908366533864,
+    "weighted_score": 0.7023166023166023,
+    "recall": 0.7657657657657657,
+    "precision": 0.6071428571428571,
+    "true_positives": 85,
+    "false_negatives": 26,
+    "false_positives": 55,
+    "true_negatives": 21,
+    "negatives_hit": 21,
+    "detected_count": 140,
+    "error": null
+  },
+  "whole_movie": {
+    "fbeta": 0.6328600405679513,
+    "weighted_score": 0.6347851851851851,
+    "recall": 0.6419753086419753,
+    "precision": 0.624,
+    "true_positives": 156,
+    "false_negatives": 87,
+    "false_positives": 94,
+    "true_negatives": 48,
+    "negatives_hit": 43,
+    "detected_count": 250,
+    "error": null
+  }
+}

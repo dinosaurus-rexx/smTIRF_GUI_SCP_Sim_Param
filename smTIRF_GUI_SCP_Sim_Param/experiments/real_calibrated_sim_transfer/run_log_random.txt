@@ -1,0 +1,51 @@
+==============================================================================
+RANDOM-SEARCH CONTROL -- no simulator, real-val selection only
+==============================================================================
+  candidates : 6 (uniform draws, seed 0)
+  bounds     : {'min_sigma': (0.0, 1.5), 'max_sigma': (0.5, 3.5), 'intensity_threshold': (0.25, 0.5), 'circular_threshold': (0.1, 0.6), 'max_displacement': (0.5, 5.0), 'min_pulsation_frames': (3, 15), 'intensity_variation_threshold': (0.05, 0.25)}
+  bands      : val x(0, 256)  test x(256, 512)
+  scorer     : compute_metrics, MATCH_MARGIN=3 (untouched)
+
+[1/6] min_sigma=0.955 max_sigma=1.715 intensity_threshold=0.260 circular_threshold=0.108 max_displacement=4.160 min_pulsation_frames=11 intensity_variation_threshold=0.171
+    val band x(0, 256): F1=0.0299 R=1.52% P=100.00% (pos=132 dets=2)
+    test band x(256, 512): F1=0.0684 R=3.60% P=66.67% (pos=111 dets=6)
+
+[2/6] min_sigma=1.094 max_sigma=2.448 intensity_threshold=0.484 circular_threshold=0.508 max_displacement=0.512 min_pulsation_frames=14 intensity_variation_threshold=0.221
+    val band x(0, 256): F1=0.0000 R=0.00% P=0.00% (pos=132 dets=0)
+    test band x(256, 512): F1=0.0000 R=0.00% P=0.00% (pos=111 dets=0)
+
+[3/6] min_sigma=0.050 max_sigma=2.689 intensity_threshold=0.294 circular_threshold=0.532 max_displacement=2.937 min_pulsation_frames=4 intensity_variation_threshold=0.135
+    val band x(0, 256): F1=0.1928 R=12.12% P=47.06% (pos=132 dets=34)
+    test band x(256, 512): F1=0.3976 R=29.73% P=60.00% (pos=111 dets=55)
+
+[4/6] min_sigma=0.042 max_sigma=0.873 intensity_threshold=0.418 circular_threshold=0.424 max_displacement=3.269 min_pulsation_frames=6 intensity_variation_threshold=0.127
+    val band x(0, 256): F1=0.4851 R=37.12% P=70.00% (pos=132 dets=70)
+    test band x(256, 512): F1=0.4505 R=36.94% P=57.75% (pos=111 dets=71)
+
+[5/6] min_sigma=1.496 max_sigma=3.464 intensity_threshold=0.421 circular_threshold=0.425 max_displacement=3.598 min_pulsation_frames=12 intensity_variation_threshold=0.077
+    val band x(0, 256): F1=0.0444 R=2.27% P=100.00% (pos=132 dets=3)
+    test band x(256, 512): F1=0.0354 R=1.80% P=100.00% (pos=111 dets=2)
+
+[6/6] min_sigma=1.082 max_sigma=2.400 intensity_threshold=0.328 circular_threshold=0.343 max_displacement=4.503 min_pulsation_frames=8 intensity_variation_threshold=0.237
+    val band x(0, 256): F1=0.0000 R=0.00% P=0.00% (pos=132 dets=0)
+    test band x(256, 512): F1=0.0000 R=0.00% P=0.00% (pos=111 dets=0)
+
+==============================================================================
+RANDOM-SEARCH CONTROL RESULT
+==============================================================================
+  cand    VAL F1   TEST F1   TEST R   TEST P
+     0    0.0299    0.0684     3.6%    66.7%
+     1    0.0000    0.0000     0.0%     0.0%
+     2    0.1928    0.3976    29.7%    60.0%
+     3    0.4851    0.4505    36.9%    57.7%  <- selected on VAL
+     4    0.0444    0.0354     1.8%   100.0%
+     5    0.0000    0.0000     0.0%     0.0%
+
+  RANDOM + real-val selection -> held-out TEST F1 0.4505 (R 36.9% P 57.7%)
+  sim-guided + real-val selection    0.7143
+  sim score alone, no real labels    0.5591
+  old BT simulator                   0.2560
+  (16.3 min)
+
+  Reading: the simulator's candidate pool IS better than random draws.
+  results -> C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\experiments\real_calibrated_sim_transfer\random_control_results.json

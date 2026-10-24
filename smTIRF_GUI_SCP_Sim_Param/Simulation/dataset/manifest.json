@@ -1,0 +1,438 @@
+{
+  "meta": {
+    "generator": "Simulation/simulate.py",
+    "driver": "Simulation/generate_dataset.py",
+    "config_path": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\config\\real_calibrated.yaml",
+    "calibrated_against": "BachelorThesis-FRETAlgorithms/realdata/vid_ch1.tiff",
+    "reference": "Simulation/config/real_movie_reference.json",
+    "python": "3.12.8",
+    "numpy": "2.4.3",
+    "train_seeds": [
+      0,
+      1,
+      2
+    ],
+    "val_seeds": [
+      1000,
+      1001
+    ],
+    "resolved_config": {
+      "global_settings": {
+        "n_frames": 501,
+        "height": 256,
+        "width": 512,
+        "dtype": "uint16",
+        "psf_sigma": 1.55,
+        "gain_adu_per_photon": 5.0,
+        "read_noise_adu": 3.8,
+        "saturation": 65535
+      },
+      "background": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_std": 5.46,
+        "smooth_sigma": 12.6,
+        "drift_knots": 4,
+        "drift_mean_std": 4.1
+      },
+      "placement": {
+        "min_distance": 3.5,
+        "soft_distance": 6.0,
+        "soft_gamma": 3.0,
+        "margin": 2.0
+      },
+      "target": {
+        "activate": true,
+        "display_name": "Target molecule",
+        "count": 243,
+        "params": {
+          "peak_amplitude_median": 153.0,
+          "peak_amplitude_sigma_log": 0.36,
+          "tau_on": 170.0,
+          "tau_off": 115.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "off_target": {
+        "activate": true,
+        "display_name": "Off-target spot",
+        "count": 91,
+        "params": {
+          "psf_sigma": 1.63,
+          "peak_amplitude_median": 110.0,
+          "peak_amplitude_sigma_log": 0.047,
+          "tau_on": 120.0,
+          "tau_off": 265.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "unannotated": {
+        "activate": true,
+        "display_name": "Unannotated emitter (unlabelled clutter)",
+        "count": 500,
+        "params": {
+          "peak_amplitude_median": 70.0,
+          "peak_amplitude_sigma_log": 0.25,
+          "tau_on": 90.0,
+          "tau_off": 200.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "moving": {
+        "activate": false,
+        "display_name": "Moving spot",
+        "count": 0,
+        "params": {
+          "peak_amplitude_median": 120.0,
+          "peak_amplitude_sigma_log": 0.5,
+          "tau_on": 0.0,
+          "tau_off": 1.0,
+          "tau_bleach": 60.0,
+          "bleach_shape": 1.0,
+          "already_active_fraction": 0.2,
+          "activation_tau": 150.0,
+          "on_amplitude_cv": 0.2,
+          "step_size": 1.0
+        }
+      }
+    },
+    "records": [
+      {
+        "split": "train",
+        "seed": 0,
+        "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep0.tif"
+      },
+      {
+        "split": "train",
+        "seed": 1,
+        "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep1.tif"
+      },
+      {
+        "split": "train",
+        "seed": 2,
+        "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep2.tif"
+      },
+      {
+        "split": "val",
+        "seed": 1000,
+        "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1000.tif"
+      },
+      {
+        "split": "val",
+        "seed": 1001,
+        "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1001.tif"
+      }
+    ]
+  },
+  "train": [
+    {
+      "seed": 0,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep0.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep0_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep0_negative.json",
+      "coord_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep0_coord.npy",
+      "class_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep0_class.npy",
+      "n_positive": 243,
+      "n_negative": 91,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 243,
+          "peak_amplitude_median": 156.02306133082442,
+          "peak_amplitude_iqr": [
+            123.32948655613038,
+            196.80659147618684
+          ],
+          "blink_duty_realised": 0.6108359412861519,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.610835941286152,
+          "overall_duty_median": 0.6307385229540918,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 91,
+          "peak_amplitude_median": 109.4870374798354,
+          "peak_amplitude_iqr": [
+            106.97021402680551,
+            112.30830395020504
+          ],
+          "blink_duty_realised": 0.3120572042727731,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3120572042727731,
+          "overall_duty_median": 0.2894211576846307,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 70.14512349176687,
+          "peak_amplitude_iqr": [
+            59.3112635987505,
+            84.3931874172309
+          ],
+          "blink_duty_realised": 0.3104271457085828,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3104271457085828,
+          "overall_duty_median": 0.29740518962075846,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1000000000000005
+      }
+    },
+    {
+      "seed": 1,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep1.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep1_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep1_negative.json",
+      "coord_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep1_coord.npy",
+      "class_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep1_class.npy",
+      "n_positive": 243,
+      "n_negative": 91,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 243,
+          "peak_amplitude_median": 151.9333677187018,
+          "peak_amplitude_iqr": [
+            121.54041980980148,
+            192.99739516581033
+          ],
+          "blink_duty_realised": 0.6063510838405494,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.6063510838405493,
+          "overall_duty_median": 0.6287425149700598,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 91,
+          "peak_amplitude_median": 108.64521561978346,
+          "peak_amplitude_iqr": [
+            105.4593298446317,
+            112.90182851111584
+          ],
+          "blink_duty_realised": 0.24704437279287578,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.24704437279287578,
+          "overall_duty_median": 0.20958083832335328,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 69.10256232788525,
+          "peak_amplitude_iqr": [
+            58.46275296774177,
+            81.95178397060003
+          ],
+          "blink_duty_realised": 0.31627944111776446,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.31627944111776446,
+          "overall_duty_median": 0.29840319361277445,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1
+      }
+    },
+    {
+      "seed": 2,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep2.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep2_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep2_negative.json",
+      "coord_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep2_coord.npy",
+      "class_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\train\\rep2_class.npy",
+      "n_positive": 243,
+      "n_negative": 91,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 243,
+          "peak_amplitude_median": 159.1547106629289,
+          "peak_amplitude_iqr": [
+            124.93516456297067,
+            200.66065036817037
+          ],
+          "blink_duty_realised": 0.5959274865906048,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.5959274865906048,
+          "overall_duty_median": 0.6147704590818364,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 91,
+          "peak_amplitude_median": 111.18890622586439,
+          "peak_amplitude_iqr": [
+            106.171014439505,
+            113.85849303396878
+          ],
+          "blink_duty_realised": 0.2614331776008423,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.2614331776008423,
+          "overall_duty_median": 0.23552894211576847,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 70.13378730949267,
+          "peak_amplitude_iqr": [
+            60.13864460737625,
+            81.63773485325589
+          ],
+          "blink_duty_realised": 0.3122674650698603,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3122674650698603,
+          "overall_duty_median": 0.29141716566866266,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1
+      }
+    }
+  ],
+  "val": [
+    {
+      "seed": 1000,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1000.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1000_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1000_negative.json",
+      "coord_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1000_coord.npy",
+      "class_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1000_class.npy",
+      "n_positive": 243,
+      "n_negative": 91,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 243,
+          "peak_amplitude_median": 160.54567147703656,
+          "peak_amplitude_iqr": [
+            122.78376291274407,
+            200.61083769017927
+          ],
+          "blink_duty_realised": 0.5907115809533197,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.5907115809533195,
+          "overall_duty_median": 0.6207584830339321,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 91,
+          "peak_amplitude_median": 109.95047883764316,
+          "peak_amplitude_iqr": [
+            106.49889548900836,
+            112.85666350358098
+          ],
+          "blink_duty_realised": 0.3346493825535742,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3346493825535741,
+          "overall_duty_median": 0.32934131736526945,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 70.54934941995168,
+          "peak_amplitude_iqr": [
+            59.56400440150716,
+            81.60764333462902
+          ],
+          "blink_duty_realised": 0.2989141716566866,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.2989141716566866,
+          "overall_duty_median": 0.2774451097804391,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1000000000000005
+      }
+    },
+    {
+      "seed": 1001,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1001.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1001_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1001_negative.json",
+      "coord_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1001_coord.npy",
+      "class_npy": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset\\val\\rep1001_class.npy",
+      "n_positive": 243,
+      "n_negative": 91,
+      "n_moving_unlabelled": 0,
+      "n_unannotated": 500,
+      "photophysics_realised": {
+        "target": {
+          "n": 243,
+          "peak_amplitude_median": 157.9695514205618,
+          "peak_amplitude_iqr": [
+            118.63661108508126,
+            193.16634633245474
+          ],
+          "blink_duty_realised": 0.5873438308568049,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.5873438308568049,
+          "overall_duty_median": 0.5808383233532934,
+          "off_time_fraction_exceeding_tracker_gap": 0.9741392290622176
+        },
+        "off_target": {
+          "n": 91,
+          "peak_amplitude_median": 109.95876160112029,
+          "peak_amplitude_iqr": [
+            106.75944539897439,
+            113.370962884871
+          ],
+          "blink_duty_realised": 0.3103244061327894,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3103244061327894,
+          "overall_duty_median": 0.26147704590818366,
+          "off_time_fraction_exceeding_tracker_gap": 0.9887219113765054
+        },
+        "unannotated": {
+          "n": 500,
+          "peak_amplitude_median": 70.77889049856961,
+          "peak_amplitude_iqr": [
+            60.248534518858015,
+            81.80592748355821
+          ],
+          "blink_duty_realised": 0.31423952095808383,
+          "live_window_median_frames": 501.0,
+          "overall_duty_realised": 0.3142395209580839,
+          "overall_duty_median": 0.3013972055888224,
+          "off_time_fraction_exceeding_tracker_gap": 0.985074875
+        }
+      },
+      "background_realised": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_knots": 4,
+        "mean_offset_std": 4.1
+      }
+    }
+  ]
+}

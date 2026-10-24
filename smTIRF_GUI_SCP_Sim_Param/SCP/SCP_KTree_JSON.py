@@ -59,10 +59,13 @@ def load_tif_video(filepath):
         frames = frames[np.newaxis, ...]
         print("Single frame detected, added frame dimension")
     elif frames.ndim == 3:
-        # Could be (n_frames, height, width) or (height, width, channels)
-        if frames.shape[0] < frames.shape[2]:
+        # Could be (n_frames, height, width) or (height, width, channels).
+        # Only the latter has a small last axis (grayscale=1, RGB=3, RGBA=4); a
+        # real movie's frame count is not a reliable signal (a 40-frame 512x512
+        # stack would be wrongly transposed by comparing shape[0] < shape[2]).
+        if frames.shape[2] <= 4:
             frames = np.transpose(frames, (2, 0, 1))
-            print("Transposed from (height, width, n_frames) to (n_frames, height, width)")
+            print("Transposed from (height, width, channels) to (channels, height, width)")
     elif frames.ndim == 4:
         # (n_frames, height, width, channels) - convert to grayscale
         print(f"Detected color video with shape {frames.shape}")
@@ -90,8 +93,20 @@ def load_tif_video(filepath):
 
 def save_events_to_json(results, output_filepath):
     """
-    Save detected smTIRF events coordinates to a JSON file
-    
+    Save detected smTIRF events to a JSON file: coordinates plus the per-event
+    features _analyze_tracks() already computed.
+
+    x and y stay first and keep their names, so every existing reader (notably
+    extract_coordinates() in Parameter_opt/SCP_parametrizer_002.py, which looks
+    for 'x'/'y' keys and ignores the rest) is unaffected.
+
+    The features are exported because they are what separates a single molecule
+    from an aggregate, and re-deriving them costs a full detection run. On
+    realdata/vid_ch1.tiff, median duration is 134 frames for annotated
+    molecules vs 41 for annotated aggregates -- enough on its own to lift
+    held-out precision from 67.9% to 75.9% at a 20-frame cut. Exporting them
+    lets a post-hoc filter or classifier be tuned without re-detecting.
+
     Parameters:
     -----------
     results : dict
@@ -99,16 +114,19 @@ def save_events_to_json(results, output_filepath):
     output_filepath : str
         Path to save the JSON file
     """
-    # Prepare data for JSON export - only coordinates
     coordinates = []
-    
-    # Add each valid event with just its coordinates
+
     for event in results['valid_events']:
         coordinates.append({
             'x': float(event['mean_position'][0]),
-            'y': float(event['mean_position'][1])
+            'y': float(event['mean_position'][1]),
+            'duration': int(event['duration']),
+            'mean_intensity': float(event['mean_intensity']),
+            'mean_circularity': float(event['mean_circularity']),
+            'max_displacement': float(event['max_displacement']),
+            'intensity_cv': float(event['intensity_cv']),
         })
-    
+
     # Save to JSON file
     with open(output_filepath, 'w') as f:
         json.dump(coordinates, f, indent=2)
@@ -180,14 +198,19 @@ class smTIRFEventDetector:
     Detects circular, fixed, and pulsating fluorescent events in microscopy videos
     """
     
-    def __init__(self, 
+    def __init__(self,
                  min_sigma: float = 1.0,
                  max_sigma: float = 5.0,
                  threshold: float = 0.1,
                  circularity_threshold: float = 0.7,
                  max_displacement: float = 2.0,
                  min_pulsation_frames: int = 3,
-                 intensity_variation_threshold: float = 0.3):
+                 intensity_variation_threshold: float = 0.3,
+                 use_bandpass: bool = False,
+                 bandpass_bg_sigma: float = 8.0,
+                 track_merge_dist: float = 1.0,
+                 event_nms_radius: float = 0.0,
+                 intensity_aperture: float = 0.0):
         """
         Parameters:
         -----------
@@ -200,9 +223,79 @@ class smTIRFEventDetector:
         max_displacement : float
             Maximum allowed movement between frames (pixels)
         min_pulsation_frames : int
-            Minimum frames showing intensity variation for pulsation
+            MINIMUM TRACK LENGTH, in frames. Despite the name this is not a
+            pulsation criterion: _analyze_tracks() uses it solely as
+            len(track['spots']) >= min_pulsation_frames, i.e. a track must
+            survive this many frames to be classified at all. (The coefficient
+            of variation, the actual pulsation test, is
+            intensity_variation_threshold.) It is a strong aggregate/molecule
+            discriminator on realdata/vid_ch1.tiff, where the median track
+            length is 134 frames for annotated molecules, 41 for annotated
+            aggregates and 25 for unannotated false positives -- so raising it
+            trades recall for precision along a smooth curve (held-out test
+            band: 95.5% R / 67.9% P at 11, 93.7% / 75.9% at 20, 88.3% / 83.8%
+            at 40). Values well above the historical 3-15 range are useful; see
+            PARAM_BOUNDS in Parameter_opt/SCP_parametrizer_002.py.
         intensity_variation_threshold : float
-            Minimum coefficient of variation for pulsation detection
+            Minimum coefficient of variation for pulsation detection. Note the
+            test KEEPS high-CV tracks (is_pulsating = cv >= threshold), which
+            interacts with intensity_aperture -- see the warning there.
+        intensity_aperture : float
+            Radius (px) of the signal aperture for per-spot photometry, with the
+            local background subtracted from the annulus [r+2, r+5].
+
+            0.0 (default) selects the legacy measurement: mean over a disc of
+            radius int(sigma * 1.5), no background subtraction. That truncation
+            makes the radius 0 or 1 px at the real-tuned sigma range, so the
+            legacy value is close to a single-pixel sample sitting on the full
+            background pedestal. 2.0 is a sensible aperture for a
+            diffraction-limited PSF.
+
+            The default is legacy because switching CHANGES THE MEANING of both
+            mean_intensity and intensity_cv, invalidating any previously tuned
+            intensity_variation_threshold. Measured on realdata/vid_ch1.tiff at
+            the annotated coordinates, the gain in class separation is modest for
+            brightness (AUC 0.899 legacy -> 0.909 with a 2 px aperture) but large
+            for CV (0.580 -> 0.748).
+
+            WARNING before enabling it in a search. With background subtracted,
+            annotated aggregates on that movie have HIGHER cv than molecules
+            (1.596 vs 0.791), partly because their near-zero mean inflates the
+            ratio. Since the classifier keeps cv >= intensity_variation_threshold,
+            a higher threshold would then preferentially retain aggregates -- the
+            opposite of what is wanted -- and the searched bounds of (0.05, 0.25)
+            sit far below the observed range and would pass everything. Enabling
+            this therefore requires revisiting both the direction of the CV test
+            and its bounds; it is not a drop-in change.
+        event_nms_radius : float
+            Radius (px) for a final greedy non-maximum suppression over the
+            CLASSIFIED events: where two surviving events sit within this
+            distance, the longer-lived one is kept. This runs after track
+            merging and catches what track_merge_dist cannot -- a molecule that
+            blinks dark for more than the 3-frame tracking gap starts a fresh
+            track, and the two tracks are never merged because merging compares
+            mean positions of tracks that both already exist.
+
+            0.0 (default) disables it, reproducing historical behaviour. 3.0 is
+            the recommended value on realdata/vid_ch1.tiff and is provably
+            lossless there: the closest pair of annotated spots in that movie is
+            3.61 px apart, so a 3 px radius cannot fuse two annotated molecules.
+            Measured on the held-out test band it removed 8 of 50 false
+            positives with the true-positive count unchanged (precision
+            67.9% -> 71.6%). Do not raise it past the minimum nearest-neighbour
+            distance of your own annotation set without re-checking that.
+        track_merge_dist : float
+            Radius (px) within which two tracks are treated as the same molecule and
+            merged before event classification. At the historical value of 1.0, one
+            molecule localised a few px apart across frames survives as two separate
+            events: on realdata/vid_ch1.tiff, 9 of 33 false positives in the held-out
+            test band (27%) were such duplicates. Raising the radius is NOT free,
+            though: measured nearest-neighbour distance between annotated spots on
+            that movie is mean 11.4 px / median 10.4 px (13.0 / 12.0 for targets
+            only) and six pairs sit closer than 5 px, so a large radius starts
+            merging genuinely distinct molecules. (An earlier version of this note
+            claimed ~20 px and concluded a larger radius was generally safe; ~20 px
+            is sqrt(area/N), about 2x the typical nearest-neighbour distance.)
         """
         self.min_sigma = min_sigma
         self.max_sigma = max_sigma
@@ -211,7 +304,12 @@ class smTIRFEventDetector:
         self.max_displacement = max_displacement
         self.min_pulsation_frames = min_pulsation_frames
         self.intensity_variation_threshold = intensity_variation_threshold
-        
+        self.use_bandpass = use_bandpass
+        self.bandpass_bg_sigma = bandpass_bg_sigma
+        self.track_merge_dist = track_merge_dist
+        self.event_nms_radius = event_nms_radius
+        self.intensity_aperture = intensity_aperture
+
         # Initialize merge counter
         self.merge_count = 0
         
@@ -228,8 +326,17 @@ class smTIRFEventDetector:
     
     def detect_spots(self, frame: np.ndarray) -> List[Tuple[float, float, float, float]]:
         """Detect potential spots using blob detection"""
+        frame_det = frame
+        if self.use_bandpass:
+            # Bandpass: subtract a broad Gaussian background estimate to flatten the
+            # uneven background of noisy (real) movies. Without this, min-max
+            # normalization below is dominated by background structure and low
+            # thresholds trigger a flood of spurious blobs (slow + imprecise).
+            background = ndimage.gaussian_filter(frame.astype(np.float64), self.bandpass_bg_sigma)
+            frame_det = np.clip(frame.astype(np.float64) - background, 0, None)
+
         # Normalize only for blob detection, preserving original intensities
-        frame_norm = frame.copy()
+        frame_norm = frame_det.astype(np.float64)
         frame_norm = (frame_norm - np.min(frame_norm)) / (np.max(frame_norm) - np.min(frame_norm) + 1e-10)
         
         # Use Laplacian of Gaussian blob detection on normalized frame
@@ -244,13 +351,51 @@ class smTIRFEventDetector:
         spots = []
         for blob in blobs:
             y, x, r = blob
-            # Calculate local intensity using original (non-normalized) frame
+            if self.intensity_aperture > 0:
+                intensity = self._aperture_intensity(frame, x, y)
+                if intensity is not None:
+                    spots.append((x, y, r, intensity))
+                continue
+            # Legacy path. NB int(r*1.5) truncates: at the real-tuned sigma range
+            # (~0.45-1.27) this is a radius of 0 or 1 px, i.e. essentially a
+            # single-pixel readout sitting on the full background pedestal. Kept
+            # as the default so previously tuned parameter sets stay valid; set
+            # intensity_aperture > 0 for real photometry.
             mask = self.create_circular_mask(frame.shape, (int(x), int(y)), int(r*1.5))
             if np.any(mask):
                 intensity = np.mean(frame[mask])  # Use original frame intensities
                 spots.append((x, y, r, intensity))
-            
+
         return spots
+
+    def _aperture_intensity(self, frame, x, y):
+        """Background-subtracted aperture photometry at (x, y), or None if the
+        spot is too close to an edge to place the background annulus.
+
+        Signal = mean over a disc of radius intensity_aperture. Background =
+        median over the annulus [intensity_aperture + 2, intensity_aperture + 5],
+        which is robust to a neighbouring spot intruding on the ring. Works in a
+        local window rather than a full-frame mask, so it is also far cheaper
+        than the legacy path.
+        """
+        r_sig = float(self.intensity_aperture)
+        r_in, r_out = r_sig + 2.0, r_sig + 5.0
+        h, w = frame.shape
+        half = int(np.ceil(r_out)) + 1
+        cx, cy = int(round(x)), int(round(y))
+        x0, x1 = max(0, cx - half), min(w, cx + half + 1)
+        y0, y1 = max(0, cy - half), min(h, cy + half + 1)
+        win = frame[y0:y1, x0:x1]
+        if win.size == 0:
+            return None
+
+        yy, xx = np.ogrid[y0:y1, x0:x1]
+        d2 = (xx - x) ** 2 + (yy - y) ** 2
+        sig = d2 <= r_sig ** 2
+        ann = (d2 >= r_in ** 2) & (d2 <= r_out ** 2)
+        if not sig.any() or not ann.any():
+            return None
+        return float(np.mean(win[sig]) - np.median(win[ann]))
     
     def create_circular_mask(self, shape: Tuple[int, int], center: Tuple[int, int], radius: int) -> np.ndarray:
         """Create circular mask for intensity calculations"""
@@ -547,7 +692,8 @@ class smTIRFEventDetector:
     def _analyze_tracks(self, tracks):
         """Analyze tracks to find valid events with optimized calculations"""
         # First merge overlapping tracks and count merges
-        merged_tracks = self._merge_overlapping_tracks_optimized(tracks, position_threshold=1)
+        merged_tracks = self._merge_overlapping_tracks_optimized(
+            tracks, position_threshold=self.track_merge_dist)
         
         print(f"After merging: {len(tracks)} tracks → {len(merged_tracks)} tracks")
         
@@ -600,8 +746,40 @@ class smTIRFEventDetector:
                     'max_displacement': max_displacement,
                     'intensity_cv': intensity_cv
                 })
-        
-        return valid_events
+
+        return self._suppress_duplicate_events(valid_events)
+
+    def _suppress_duplicate_events(self, events):
+        """Greedy NMS over classified events; longest-lived event wins.
+
+        Track merging (_merge_overlapping_tracks_optimized) cannot catch these:
+        it merges tracks by mean position, but a molecule that blinks dark for
+        longer than the 3-frame tracking gap has already been split into two
+        tracks whose mean positions may differ by several px. See the
+        event_nms_radius docstring in __init__ for the measured effect and for
+        why the radius must stay below your annotation set's minimum
+        nearest-neighbour distance.
+        """
+        if self.event_nms_radius <= 0 or len(events) <= 1:
+            return events
+
+        r2 = self.event_nms_radius ** 2
+        winners = []
+        # Longest first, so the survivor of a cluster is the best-observed track.
+        for ev in sorted(events, key=lambda e: -e['duration']):
+            x, y = ev['mean_position']
+            if all((x - k['mean_position'][0]) ** 2 + (y - k['mean_position'][1]) ** 2 > r2
+                   for k in winners):
+                winners.append(ev)
+
+        # Emit in the original (track_id) order, not the duration order used to
+        # pick winners, so the event list stays comparable run to run.
+        winner_ids = {id(ev) for ev in winners}
+        kept = [ev for ev in events if id(ev) in winner_ids]
+
+        print(f"Event NMS (r={self.event_nms_radius} px): "
+              f"{len(events)} -> {len(kept)} events")
+        return kept
     
     def process_video(self, frames: np.ndarray) -> Dict:
         """
@@ -780,6 +958,8 @@ def parse_arguments():
                        help='Path to save JSON output (default: input_filename_events.json)')
     parser.add_argument('--no_json', action='store_true',
                        help='Disable JSON output')
+    parser.add_argument('--no_plot', action='store_true',
+                       help='Disable all matplotlib visualization (use when running headless/automated)')
     
     # Detector parameters
     parser.add_argument('--min_sigma', type=float, default=30.0,
@@ -793,13 +973,43 @@ def parse_arguments():
     parser.add_argument('--max_displacement', type=float, default=3.0,
                        help='Maximum allowed movement between frames (pixels)')
     parser.add_argument('--min_pulsation_frames', type=int, default=5,
-                       help='Minimum frames showing intensity variation for pulsation')
+                       help='Minimum TRACK LENGTH in frames (the name is historical; '
+                            'this is a track-duration filter, not a pulsation test). '
+                            'Strongly affects precision: on realdata/vid_ch1.tiff the '
+                            'held-out band gives 95.5%% recall / 67.9%% precision at 11, '
+                            '93.7%%/75.9%% at 20 and 88.3%%/83.8%% at 40')
     parser.add_argument('--intensity_variation_threshold', type=float, default=0.2,
                        help='Minimum coefficient of variation for pulsation detection')
-    
+    parser.add_argument('--bandpass', action='store_true',
+                       help='Subtract a broad-Gaussian background before blob detection '
+                            '(flattens uneven background of noisy movies)')
+    parser.add_argument('--bandpass_bg_sigma', type=float, default=8.0,
+                       help='Sigma (pixels) of the background estimate for --bandpass')
+    parser.add_argument('--track_merge_dist', type=float, default=1.0,
+                       help='Radius (px) within which tracks are merged as one molecule '
+                            'before event classification. 1.0 reproduces the historical '
+                            'behaviour; larger values suppress duplicate detections of '
+                            'the same spot')
+    parser.add_argument('--event_nms_radius', type=float, default=0.0,
+                       help='Radius (px) for a final duplicate-suppression pass over '
+                            'CLASSIFIED events (longest-lived wins). Catches blinking '
+                            'molecules split into two tracks, which track_merge_dist '
+                            'cannot. 0 disables (historical behaviour); 3.0 is lossless '
+                            'on realdata/vid_ch1.tiff, whose closest annotated pair is '
+                            '3.61 px apart. Keep it below your annotation set\'s minimum '
+                            'nearest-neighbour distance')
+    parser.add_argument('--intensity_aperture', type=float, default=0.0,
+                       help='Signal-aperture radius (px) for per-spot photometry, with '
+                            'local background subtracted from the annulus [r+2, r+5]. '
+                            '0 selects the legacy int(sigma*1.5) disc with no background '
+                            'subtraction, which truncates to 0-1 px at small sigmas. '
+                            'Changing this changes the meaning of mean_intensity and '
+                            'intensity_cv and invalidates any tuned '
+                            'intensity_variation_threshold -- see the class docstring')
+
     return parser.parse_args()
 
-def run_analysis_on_tif(filepath, params, output_json=None, save_json=True):
+def run_analysis_on_tif(filepath, params, output_json=None, save_json=True, show_plots=True):
     """Main function to run analysis on your .tif file"""
     
     try:
@@ -823,9 +1033,10 @@ def run_analysis_on_tif(filepath, params, output_json=None, save_json=True):
                 output_json = f"{base_name}_events.json"
             save_events_to_json(results, output_json)
         
-        # Visualize results
-        detector.visualize_results(frames, results, frame_idx=frames.shape[0]//2)
-        
+        # Visualize results (skipped when running headless/automated)
+        if show_plots:
+            detector.visualize_results(frames, results, frame_idx=frames.shape[0]//2)
+
         print(f"\n=== ANALYSIS COMPLETE ===")
         print(f"File: {filepath}")
         print(f"Valid events found: {results['total_events']}")
@@ -855,7 +1066,12 @@ if __name__ == "__main__":
         'circularity_threshold': args.circularity_threshold,
         'max_displacement': args.max_displacement,
         'min_pulsation_frames': args.min_pulsation_frames,
-        'intensity_variation_threshold': args.intensity_variation_threshold
+        'intensity_variation_threshold': args.intensity_variation_threshold,
+        'use_bandpass': args.bandpass,
+        'bandpass_bg_sigma': args.bandpass_bg_sigma,
+        'track_merge_dist': args.track_merge_dist,
+        'event_nms_radius': args.event_nms_radius,
+        'intensity_aperture': args.intensity_aperture
     }
     
     # Print parameters being used
@@ -866,8 +1082,9 @@ if __name__ == "__main__":
     
     # Run the analysis
     results, frames, detector = run_analysis_on_tif(
-        args.filepath, 
-        params, 
+        args.filepath,
+        params,
         output_json=args.output_json,
-        save_json=not args.no_json
+        save_json=not args.no_json,
+        show_plots=not args.no_plot
     )

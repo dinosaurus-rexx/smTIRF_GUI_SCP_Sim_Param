@@ -1,0 +1,717 @@
+{
+  "method": "direct_real",
+  "fbeta": 1.0,
+  "n_trials": 40,
+  "bands": {
+    "train": [
+      0,
+      170
+    ],
+    "val": [
+      170,
+      256
+    ],
+    "test": [
+      256,
+      512
+    ]
+  },
+  "warm_start": [
+    {
+      "min_sigma": 0.5,
+      "max_sigma": 2.5,
+      "intensity_threshold": 0.3,
+      "circular_threshold": 0.1,
+      "max_displacement": 3.0,
+      "min_pulsation_frames": 3,
+      "intensity_variation_threshold": 0.05
+    },
+    {
+      "min_sigma": 0.5,
+      "max_sigma": 2.5,
+      "intensity_threshold": 0.35,
+      "circular_threshold": 0.3,
+      "max_displacement": 2.0,
+      "min_pulsation_frames": 5,
+      "intensity_variation_threshold": 0.1
+    },
+    {
+      "min_sigma": 0.7,
+      "max_sigma": 2.0,
+      "intensity_threshold": 0.4,
+      "circular_threshold": 0.25,
+      "max_displacement": 2.0,
+      "min_pulsation_frames": 4,
+      "intensity_variation_threshold": 0.08
+    },
+    {
+      "min_sigma": 0.4515457399879006,
+      "max_sigma": 1.2689848283173364,
+      "intensity_threshold": 0.32336429282837625,
+      "circular_threshold": 0.20209149318019778,
+      "max_displacement": 4.9934159843646295,
+      "min_pulsation_frames": 20,
+      "intensity_variation_threshold": 0.07179385564931576
+    }
+  ],
+  "param_bounds": {
+    "min_sigma": [
+      0.0,
+      1.5
+    ],
+    "max_sigma": [
+      0.5,
+      3.5
+    ],
+    "intensity_threshold": [
+      0.25,
+      0.5
+    ],
+    "circular_threshold": [
+      0.1,
+      0.6
+    ],
+    "max_displacement": [
+      0.5,
+      5.0
+    ],
+    "min_pulsation_frames": [
+      3,
+      60
+    ],
+    "intensity_variation_threshold": [
+      0.05,
+      0.25
+    ]
+  },
+  "event_nms_radius": 3.0,
+  "seed": 42,
+  "top_k": 8,
+  "final_parameters": {
+    "min_sigma": 0.26490714810055244,
+    "max_sigma": 0.7545756760241756,
+    "intensity_threshold": 0.4919383127344682,
+    "circular_threshold": 0.3459968940508835,
+    "max_displacement": 4.9548580010929735,
+    "min_pulsation_frames": 41,
+    "intensity_variation_threshold": 0.08913798318546065
+  },
+  "final_trial_number": 28,
+  "train_metrics": {
+    "fbeta": 0.757396449704142,
+    "recall": 0.735632183908046,
+    "precision": 0.7804878048780488
+  },
+  "val_metrics": {
+    "fbeta": 0.8333333333333334,
+    "recall": 0.8888888888888888,
+    "precision": 0.7843137254901961
+  },
+  "test_metrics": {
+    "fbeta": 0.8340425531914892,
+    "recall": 0.8828828828828829,
+    "precision": 0.7903225806451613
+  },
+  "all_trials": [
+    {
+      "number": 0,
+      "params": {
+        "min_sigma": 0.5,
+        "max_sigma": 2.5,
+        "intensity_threshold": 0.3,
+        "circular_threshold": 0.1,
+        "max_displacement": 3.0,
+        "min_pulsation_frames": 3,
+        "intensity_variation_threshold": 0.05
+      },
+      "train_fbeta": 0.8186528497409327,
+      "val_fbeta": 0.8073394495412843,
+      "test_fbeta": 0.7851851851851852
+    },
+    {
+      "number": 1,
+      "params": {
+        "min_sigma": 0.5,
+        "max_sigma": 2.5,
+        "intensity_threshold": 0.35,
+        "circular_threshold": 0.3,
+        "max_displacement": 2.0,
+        "min_pulsation_frames": 5,
+        "intensity_variation_threshold": 0.1
+      },
+      "train_fbeta": 0.33043478260869563,
+      "val_fbeta": 0.47619047619047616,
+      "test_fbeta": 0.5202312138728324
+    },
+    {
+      "number": 2,
+      "params": {
+        "min_sigma": 0.7,
+        "max_sigma": 2.0,
+        "intensity_threshold": 0.4,
+        "circular_threshold": 0.25,
+        "max_displacement": 2.0,
+        "min_pulsation_frames": 4,
+        "intensity_variation_threshold": 0.08
+      },
+      "train_fbeta": 0.08791208791208792,
+      "val_fbeta": 0.18867924528301885,
+      "test_fbeta": 0.3088235294117648
+    },
+    {
+      "number": 3,
+      "params": {
+        "min_sigma": 0.4515457399879006,
+        "max_sigma": 1.2689848283173364,
+        "intensity_threshold": 0.32336429282837625,
+        "circular_threshold": 0.20209149318019778,
+        "max_displacement": 4.9934159843646295,
+        "min_pulsation_frames": 20,
+        "intensity_variation_threshold": 0.07179385564931576
+      },
+      "train_fbeta": 0.861878453038674,
+      "val_fbeta": 0.8316831683168316,
+      "test_fbeta": 0.846774193548387
+    },
+    {
+      "number": 4,
+      "params": {
+        "min_sigma": 0.5618101782710437,
+        "max_sigma": 3.360117846095772,
+        "intensity_threshold": 0.43299848545285125,
+        "circular_threshold": 0.3993292420985183,
+        "max_displacement": 1.2020838819909643,
+        "min_pulsation_frames": 12,
+        "intensity_variation_threshold": 0.061616722433639894
+      },
+      "train_fbeta": 0.0449438202247191,
+      "val_fbeta": 0.19607843137254902,
+      "test_fbeta": 0.22047244094488186
+    },
+    {
+      "number": 5,
+      "params": {
+        "min_sigma": 1.2992642186624028,
+        "max_sigma": 2.6620480325305316,
+        "intensity_threshold": 0.42701814444901137,
+        "circular_threshold": 0.11029224714790123,
+        "max_displacement": 4.864594334728975,
+        "min_pulsation_frames": 51,
+        "intensity_variation_threshold": 0.09246782213565524
+      },
+      "train_fbeta": 0.0,
+      "val_fbeta": 0.0,
+      "test_fbeta": 0.03508771929824561
+    },
+    {
+      "number": 6,
+      "params": {
+        "min_sigma": 0.2727374508106509,
+        "max_sigma": 1.0502135295603015,
+        "intensity_threshold": 0.32606056073988443,
+        "circular_threshold": 0.36237821581611895,
+        "max_displacement": 2.4437525838895207,
+        "min_pulsation_frames": 19,
+        "intensity_variation_threshold": 0.17237057894447588
+      },
+      "train_fbeta": 0.02150537634408602,
+      "val_fbeta": 0.2142857142857143,
+      "test_fbeta": 0.19117647058823528
+    },
+    {
+      "number": 7,
+      "params": {
+        "min_sigma": 0.20924079097806275,
+        "max_sigma": 1.3764339456056545,
+        "intensity_threshold": 0.3415904608234229,
+        "circular_threshold": 0.32803499210851794,
+        "max_displacement": 4.033291826268561,
+        "min_pulsation_frames": 14,
+        "intensity_variation_threshold": 0.1528468876827223
+      },
+      "train_fbeta": 0.3130434782608696,
+      "val_fbeta": 0.5135135135135135,
+      "test_fbeta": 0.45054945054945056
+    },
+    {
+      "number": 8,
+      "params": {
+        "min_sigma": 0.8886218532930636,
+        "max_sigma": 1.105276404703584,
+        "intensity_threshold": 0.4018862129753596,
+        "circular_threshold": 0.18526206184364577,
+        "max_displacement": 0.7927321684337578,
+        "min_pulsation_frames": 58,
+        "intensity_variation_threshold": 0.24312640661491186
+      },
+      "train_fbeta": 0.0,
+      "val_fbeta": 0.0,
+      "test_fbeta": 0.0
+    },
+    {
+      "number": 9,
+      "params": {
+        "min_sigma": 1.2125960221746916,
+        "max_sigma": 1.978909392564883,
+        "intensity_threshold": 0.27441802850159597,
+        "circular_threshold": 0.4421165132560785,
+        "max_displacement": 2.480686221828206,
+        "min_pulsation_frames": 10,
+        "intensity_variation_threshold": 0.14903538202225403
+      },
+      "train_fbeta": 0.0449438202247191,
+      "val_fbeta": 0.0851063829787234,
+      "test_fbeta": 0.1016949152542373
+    },
+    {
+      "number": 10,
+      "params": {
+        "min_sigma": 0.04987652777769441,
+        "max_sigma": 0.517991548867452,
+        "intensity_threshold": 0.4923842776969664,
+        "circular_threshold": 0.5661451709558936,
+        "max_displacement": 3.7182632548855774,
+        "min_pulsation_frames": 30,
+        "intensity_variation_threshold": 0.24195414918908395
+      },
+      "train_fbeta": 0.022727272727272724,
+      "val_fbeta": 0.0425531914893617,
+      "test_fbeta": 0.06837606837606838
+    },
+    {
+      "number": 11,
+      "params": {
+        "min_sigma": 0.9099076148217943,
+        "max_sigma": 3.3679301722749706,
+        "intensity_threshold": 0.2530220333689777,
+        "circular_threshold": 0.1088811539854435,
+        "max_displacement": 3.637201542530425,
+        "min_pulsation_frames": 29,
+        "intensity_variation_threshold": 0.05639526134645636
+      },
+      "train_fbeta": 0.26666666666666666,
+      "val_fbeta": 0.3636363636363636,
+      "test_fbeta": 0.6012269938650308
+    },
+    {
+      "number": 12,
+      "params": {
+        "min_sigma": 0.39340706822003063,
+        "max_sigma": 1.8537719593080428,
+        "intensity_threshold": 0.29001346199788813,
+        "circular_threshold": 0.20892679191816868,
+        "max_displacement": 4.7459557249289865,
+        "min_pulsation_frames": 25,
+        "intensity_variation_threshold": 0.1177240796118301
+      },
+      "train_fbeta": 0.6442953020134228,
+      "val_fbeta": 0.6666666666666666,
+      "test_fbeta": 0.74235807860262
+    },
+    {
+      "number": 13,
+      "params": {
+        "min_sigma": 0.7495160154889045,
+        "max_sigma": 2.7966866392849035,
+        "intensity_threshold": 0.31862124332062025,
+        "circular_threshold": 0.1566688186333629,
+        "max_displacement": 3.26086242553951,
+        "min_pulsation_frames": 45,
+        "intensity_variation_threshold": 0.05279075399025185
+      },
+      "train_fbeta": 0.06666666666666667,
+      "val_fbeta": 0.163265306122449,
+      "test_fbeta": 0.22222222222222218
+    },
+    {
+      "number": 14,
+      "params": {
+        "min_sigma": 0.11769357745017106,
+        "max_sigma": 0.5410677697104984,
+        "intensity_threshold": 0.37356431684717034,
+        "circular_threshold": 0.24495996700509232,
+        "max_displacement": 3.0397146385057594,
+        "min_pulsation_frames": 35,
+        "intensity_variation_threshold": 0.11267557642432897
+      },
+      "train_fbeta": 0.556390977443609,
+      "val_fbeta": 0.7294117647058822,
+      "test_fbeta": 0.7272727272727273
+    },
+    {
+      "number": 15,
+      "params": {
+        "min_sigma": 1.0282569121934015,
+        "max_sigma": 2.3338847489267427,
+        "intensity_threshold": 0.2984372453234237,
+        "circular_threshold": 0.1497179187167975,
+        "max_displacement": 4.307283551356079,
+        "min_pulsation_frames": 20,
+        "intensity_variation_threshold": 0.07701933070858168
+      },
+      "train_fbeta": 0.14432989690721648,
+      "val_fbeta": 0.3571428571428571,
+      "test_fbeta": 0.4594594594594595
+    },
+    {
+      "number": 16,
+      "params": {
+        "min_sigma": 0.4727474134607726,
+        "max_sigma": 3.0121415519488695,
+        "intensity_threshold": 0.36522267852751755,
+        "circular_threshold": 0.24075672533492173,
+        "max_displacement": 4.424808597684908,
+        "min_pulsation_frames": 3,
+        "intensity_variation_threshold": 0.12765413491345265
+      },
+      "train_fbeta": 0.10526315789473682,
+      "val_fbeta": 0.2692307692307693,
+      "test_fbeta": 0.3472222222222222
+    },
+    {
+      "number": 17,
+      "params": {
+        "min_sigma": 0.6624665825811604,
+        "max_sigma": 1.6397809179133813,
+        "intensity_threshold": 0.3027859363879634,
+        "circular_threshold": 0.1013885006656022,
+        "max_displacement": 2.87897307468602,
+        "min_pulsation_frames": 39,
+        "intensity_variation_threshold": 0.07711970446232964
+      },
+      "train_fbeta": 0.12903225806451613,
+      "val_fbeta": 0.23529411764705882,
+      "test_fbeta": 0.30303030303030304
+    },
+    {
+      "number": 18,
+      "params": {
+        "min_sigma": 0.3360419363638292,
+        "max_sigma": 0.9641728115846036,
+        "intensity_threshold": 0.25202997578855874,
+        "circular_threshold": 0.4754986180062628,
+        "max_displacement": 1.584286006004966,
+        "min_pulsation_frames": 19,
+        "intensity_variation_threshold": 0.20516497720992505
+      },
+      "train_fbeta": 0.0,
+      "val_fbeta": 0.0425531914893617,
+      "test_fbeta": 0.01785714285714286
+    },
+    {
+      "number": 19,
+      "params": {
+        "min_sigma": 0.5990765424190032,
+        "max_sigma": 2.224033173828994,
+        "intensity_threshold": 0.3263232665983005,
+        "circular_threshold": 0.29240993816728034,
+        "max_displacement": 3.583479114681735,
+        "min_pulsation_frames": 10,
+        "intensity_variation_threshold": 0.09457024921807856
+      },
+      "train_fbeta": 0.24761904761904766,
+      "val_fbeta": 0.39285714285714285,
+      "test_fbeta": 0.5714285714285714
+    },
+    {
+      "number": 20,
+      "params": {
+        "min_sigma": 1.4703456236066401,
+        "max_sigma": 3.1072742114278182,
+        "intensity_threshold": 0.2822029562247042,
+        "circular_threshold": 0.1721800280232666,
+        "max_displacement": 4.148286232901247,
+        "min_pulsation_frames": 24,
+        "intensity_variation_threshold": 0.05175139896958987
+      },
+      "train_fbeta": 0.21782178217821782,
+      "val_fbeta": 0.33333333333333337,
+      "test_fbeta": 0.3357664233576642
+    },
+    {
+      "number": 21,
+      "params": {
+        "min_sigma": 0.4092787392523993,
+        "max_sigma": 1.7087505929075435,
+        "intensity_threshold": 0.28630671504548155,
+        "circular_threshold": 0.20369242835099088,
+        "max_displacement": 4.9890312844289895,
+        "min_pulsation_frames": 26,
+        "intensity_variation_threshold": 0.13019324753044992
+      },
+      "train_fbeta": 0.46031746031746035,
+      "val_fbeta": 0.5205479452054794,
+      "test_fbeta": 0.7064676616915422
+    },
+    {
+      "number": 22,
+      "params": {
+        "min_sigma": 0.3511494678393681,
+        "max_sigma": 1.527949352686441,
+        "intensity_threshold": 0.3085262478943954,
+        "circular_threshold": 0.22160577083699545,
+        "max_displacement": 4.588218704997579,
+        "min_pulsation_frames": 36,
+        "intensity_variation_threshold": 0.11722422760183755
+      },
+      "train_fbeta": 0.638888888888889,
+      "val_fbeta": 0.7032967032967032,
+      "test_fbeta": 0.7336244541484717
+    },
+    {
+      "number": 23,
+      "params": {
+        "min_sigma": 0.18975502734217137,
+        "max_sigma": 1.9947547371091532,
+        "intensity_threshold": 0.27455170321981004,
+        "circular_threshold": 0.147817673301924,
+        "max_displacement": 4.5657900585086395,
+        "min_pulsation_frames": 15,
+        "intensity_variation_threshold": 0.06922044368802241
+      },
+      "train_fbeta": 0.34074074074074073,
+      "val_fbeta": 0.3057324840764331,
+      "test_fbeta": 0.3672456575682382
+    },
+    {
+      "number": 24,
+      "params": {
+        "min_sigma": 0.7650320971612964,
+        "max_sigma": 1.3572999438714994,
+        "intensity_threshold": 0.33944451343249493,
+        "circular_threshold": 0.27105537454219586,
+        "max_displacement": 3.9091503775276317,
+        "min_pulsation_frames": 23,
+        "intensity_variation_threshold": 0.10329580298113969
+      },
+      "train_fbeta": 0.0449438202247191,
+      "val_fbeta": 0.0851063829787234,
+      "test_fbeta": 0.052173913043478265
+    },
+    {
+      "number": 25,
+      "params": {
+        "min_sigma": 0.4647444717876502,
+        "max_sigma": 1.907381233147906,
+        "intensity_threshold": 0.3674537085688176,
+        "circular_threshold": 0.20085273543172383,
+        "max_displacement": 4.747421031400682,
+        "min_pulsation_frames": 33,
+        "intensity_variation_threshold": 0.08488981486248957
+      },
+      "train_fbeta": 0.6524822695035462,
+      "val_fbeta": 0.7042253521126761,
+      "test_fbeta": 0.7839195979899497
+    },
+    {
+      "number": 26,
+      "params": {
+        "min_sigma": 0.5383339043898889,
+        "max_sigma": 2.254194610499914,
+        "intensity_threshold": 0.3663561248564056,
+        "circular_threshold": 0.13549168383180588,
+        "max_displacement": 3.404140144965544,
+        "min_pulsation_frames": 45,
+        "intensity_variation_threshold": 0.08286873050523388
+      },
+      "train_fbeta": 0.1276595744680851,
+      "val_fbeta": 0.163265306122449,
+      "test_fbeta": 0.29007633587786263
+    },
+    {
+      "number": 27,
+      "params": {
+        "min_sigma": 0.8773964790493098,
+        "max_sigma": 2.456093660000065,
+        "intensity_threshold": 0.39131793646047414,
+        "circular_threshold": 0.18980929540053915,
+        "max_displacement": 2.8311137812768568,
+        "min_pulsation_frames": 32,
+        "intensity_variation_threshold": 0.06759146656760875
+      },
+      "train_fbeta": 0.022727272727272724,
+      "val_fbeta": 0.04347826086956522,
+      "test_fbeta": 0.1016949152542373
+    },
+    {
+      "number": 28,
+      "params": {
+        "min_sigma": 0.26490714810055244,
+        "max_sigma": 0.7545756760241756,
+        "intensity_threshold": 0.4919383127344682,
+        "circular_threshold": 0.3459968940508835,
+        "max_displacement": 4.9548580010929735,
+        "min_pulsation_frames": 41,
+        "intensity_variation_threshold": 0.08913798318546065
+      },
+      "train_fbeta": 0.757396449704142,
+      "val_fbeta": 0.8333333333333334,
+      "test_fbeta": 0.8340425531914892
+    },
+    {
+      "number": 29,
+      "params": {
+        "min_sigma": 0.040656273849649094,
+        "max_sigma": 0.7877064165401721,
+        "intensity_threshold": 0.4947955103054236,
+        "circular_threshold": 0.3675192540443178,
+        "max_displacement": 1.8920632430824238,
+        "min_pulsation_frames": 8,
+        "intensity_variation_threshold": 0.10228833821158678
+      },
+      "train_fbeta": 0.22429906542056077,
+      "val_fbeta": 0.5,
+      "test_fbeta": 0.5685279187817259
+    },
+    {
+      "number": 30,
+      "params": {
+        "min_sigma": 0.251714022927582,
+        "max_sigma": 0.7724877855500214,
+        "intensity_threshold": 0.4685586275938518,
+        "circular_threshold": 0.527986562011025,
+        "max_displacement": 0.6584065677669564,
+        "min_pulsation_frames": 41,
+        "intensity_variation_threshold": 0.06698431071831042
+      },
+      "train_fbeta": 0.0,
+      "val_fbeta": 0.0,
+      "test_fbeta": 0.0
+    },
+    {
+      "number": 31,
+      "params": {
+        "min_sigma": 0.5123233782252291,
+        "max_sigma": 1.267782002923547,
+        "intensity_threshold": 0.4632708116875801,
+        "circular_threshold": 0.32016958810638074,
+        "max_displacement": 4.894235712001881,
+        "min_pulsation_frames": 46,
+        "intensity_variation_threshold": 0.08651877390572543
+      },
+      "train_fbeta": 0.022727272727272724,
+      "val_fbeta": 0.04347826086956522,
+      "test_fbeta": 0.08547008547008547
+    },
+    {
+      "number": 32,
+      "params": {
+        "min_sigma": 0.46723365685001583,
+        "max_sigma": 0.8484826022840066,
+        "intensity_threshold": 0.4236073966592083,
+        "circular_threshold": 0.27197970515301917,
+        "max_displacement": 4.23316499657168,
+        "min_pulsation_frames": 40,
+        "intensity_variation_threshold": 0.07448460539491301
+      },
+      "train_fbeta": 0.43103448275862066,
+      "val_fbeta": 0.5161290322580645,
+      "test_fbeta": 0.6107784431137725
+    },
+    {
+      "number": 33,
+      "params": {
+        "min_sigma": 0.6455775383542227,
+        "max_sigma": 1.2318748111189106,
+        "intensity_threshold": 0.3551609698460317,
+        "circular_threshold": 0.43710497492274725,
+        "max_displacement": 4.602805953678331,
+        "min_pulsation_frames": 50,
+        "intensity_variation_threshold": 0.09184591066861539
+      },
+      "train_fbeta": 0.0,
+      "val_fbeta": 0.0,
+      "test_fbeta": 0.052173913043478265
+    },
+    {
+      "number": 34,
+      "params": {
+        "min_sigma": 0.13957620766988185,
+        "max_sigma": 2.6740081611216024,
+        "intensity_threshold": 0.41069753790678976,
+        "circular_threshold": 0.34711342959246383,
+        "max_displacement": 4.969868478485906,
+        "min_pulsation_frames": 6,
+        "intensity_variation_threshold": 0.06102751754149581
+      },
+      "train_fbeta": 0.7536231884057972,
+      "val_fbeta": 0.7592592592592592,
+      "test_fbeta": 0.7353951890034364
+    },
+    {
+      "number": 35,
+      "params": {
+        "min_sigma": 0.13260262332722852,
+        "max_sigma": 2.7279644966672474,
+        "intensity_threshold": 0.44712792640959376,
+        "circular_threshold": 0.3854562143119381,
+        "max_displacement": 4.990270575586256,
+        "min_pulsation_frames": 7,
+        "intensity_variation_threshold": 0.06071232898721693
+      },
+      "train_fbeta": 0.7434554973821988,
+      "val_fbeta": 0.7358490566037736,
+      "test_fbeta": 0.7428571428571429
+    },
+    {
+      "number": 36,
+      "params": {
+        "min_sigma": 0.3299069488676539,
+        "max_sigma": 3.067551363543493,
+        "intensity_threshold": 0.39074174080560037,
+        "circular_threshold": 0.3417902398612948,
+        "max_displacement": 3.86483551301374,
+        "min_pulsation_frames": 5,
+        "intensity_variation_threshold": 0.060780948623908475
+      },
+      "train_fbeta": 0.7342995169082125,
+      "val_fbeta": 0.7592592592592592,
+      "test_fbeta": 0.7310344827586207
+    },
+    {
+      "number": 37,
+      "params": {
+        "min_sigma": 0.269624475325415,
+        "max_sigma": 2.4818987363765306,
+        "intensity_threshold": 0.4123121752799992,
+        "circular_threshold": 0.4142634472008576,
+        "max_displacement": 1.1579523915809733,
+        "min_pulsation_frames": 15,
+        "intensity_variation_threshold": 0.050338743089219165
+      },
+      "train_fbeta": 0.0,
+      "val_fbeta": 0.10714285714285715,
+      "test_fbeta": 0.13043478260869568
+    },
+    {
+      "number": 38,
+      "params": {
+        "min_sigma": 0.000849676552964862,
+        "max_sigma": 3.2029502830775196,
+        "intensity_threshold": 0.447482360593393,
+        "circular_threshold": 0.3004328722584814,
+        "max_displacement": 2.448424733998398,
+        "min_pulsation_frames": 3,
+        "intensity_variation_threshold": 0.10485337529570038
+      },
+      "train_fbeta": 0.5228758169934641,
+      "val_fbeta": 0.7010309278350516,
+      "test_fbeta": 0.6558704453441295
+    },
+    {
+      "number": 39,
+      "params": {
+        "min_sigma": 0.14232938897566172,
+        "max_sigma": 2.8381981271603944,
+        "intensity_threshold": 0.4712166570750182,
+        "circular_threshold": 0.5077005426941609,
+        "max_displacement": 4.474185542284265,
+        "min_pulsation_frames": 13,
+        "intensity_variation_threshold": 0.07113021859335528
+      },
+      "train_fbeta": 0.5074626865671642,
+      "val_fbeta": 0.6511627906976744,
+      "test_fbeta": 0.6933333333333334
+    }
+  ]
+}

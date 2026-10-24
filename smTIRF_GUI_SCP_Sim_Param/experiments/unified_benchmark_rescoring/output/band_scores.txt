@@ -1,0 +1,58 @@
+﻿annotations: 243 target, 91 off-target
+scorer: greedy 1:1, per-axis margin 3 px, F1; every unmatched detection counts as FP
+
+========================================================================================
+whole movie      x[0,512)   |   243 target, 91 off-target annotations
+========================================================================================
+algorithm  stage          det    TP     FP    FN   recall   precis      F1  offtgt hit
+scp        detections    1867   243   1624     0  100.0%   13.0%  0.2303          86
+scp        selections     284   225     59    18   92.6%   79.2%  0.8539          45
+papylio    detections     305   221     84    22   90.9%   72.5%  0.8066          69
+papylio    selections     188   173     15    70   71.2%   92.0%  0.8028          10
+deepfret   detections     400   197    203    46   81.1%   49.2%  0.6128          57
+deepfret   selections     248   170     78    73   70.0%   68.5%  0.6925          40
+
+========================================================================================
+direct-CV train  x[0,170)   |   87 target, 33 off-target annotations
+========================================================================================
+algorithm  stage          det    TP     FP    FN   recall   precis      F1  offtgt hit
+scp        detections     628    87    541     0  100.0%   13.9%  0.2434          32
+scp        selections      93    78     15     9   89.7%   83.9%  0.8667          13
+papylio    detections     106    77     29    10   88.5%   72.6%  0.7979          25
+papylio    selections      72    67      5    20   77.0%   93.1%  0.8428           3
+deepfret   detections     131    69     62    18   79.3%   52.7%  0.6330          23
+deepfret   selections      85    62     23    25   71.3%   72.9%  0.7209          15
+
+========================================================================================
+direct-CV val    x[170,340)   |   78 target, 34 off-target annotations
+========================================================================================
+algorithm  stage          det    TP     FP    FN   recall   precis      F1  offtgt hit
+scp        detections     633    78    555     0  100.0%   12.3%  0.2194          31
+scp        selections      98    74     24     4   94.9%   75.5%  0.8409          18
+papylio    detections     103    74     29     4   94.9%   71.8%  0.8177          24
+papylio    selections      67    59      8    19   75.6%   88.1%  0.8138           6
+deepfret   detections     132    66     66    12   84.6%   50.0%  0.6286          19
+deepfret   selections      82    55     27    23   70.5%   67.1%  0.6875          15
+
+========================================================================================
+direct-CV TEST   x[340,512)   |   78 target, 24 off-target annotations
+========================================================================================
+algorithm  stage          det    TP     FP    FN   recall   precis      F1  offtgt hit
+scp        detections     606    78    528     0  100.0%   12.9%  0.2281          23
+scp        selections      93    73     20     5   93.6%   78.5%  0.8538          14
+papylio    detections      96    70     26     8   89.7%   72.9%  0.8046          19
+papylio    selections      49    47      2    31   60.3%   95.9%  0.7402           1
+deepfret   detections     137    60     77    18   76.9%   43.8%  0.5581          15
+deepfret   selections      81    51     30    27   65.4%   63.0%  0.6415          10
+
+========================================================================================
+sim-guided TEST  x[256,512)   |   111 target, 42 off-target annotations
+========================================================================================
+algorithm  stage          det    TP     FP    FN   recall   precis      F1  offtgt hit
+scp        detections     912   111    801     0  100.0%   12.2%  0.2170          38
+scp        selections     135   104     31     7   93.7%   77.0%  0.8455          22
+papylio    detections     145   102     43     9   91.9%   70.3%  0.7969          32
+papylio    selections      79    70      9    41   63.1%   88.6%  0.7368           6
+deepfret   detections     188    85    103    26   76.6%   45.2%  0.5686          26
+deepfret   selections     115    72     43    39   64.9%   62.6%  0.6372          18
+

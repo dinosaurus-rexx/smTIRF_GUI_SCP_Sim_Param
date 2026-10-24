@@ -1,0 +1,52 @@
+digraph smtirf_pipeline {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=11, compound=true,
+         labelloc=t, label="Workflow of the methodology"];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9];
+  edge  [fontname="Helvetica", fontsize=8, color="#4D4D4D"];
+  subgraph cluster_1 {
+    label="Stage 1 — Real recording  §2.2, §2.5"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    real [label="Real smTIRF recording\none dual-channel movie · 501 frames\n512 px wide · analysed as a single channel\nthe only real data available", fillcolor="#E7F0F8", color="#0072B2"];
+    annot [label="Manual annotation  §2.2\nGUI2 · 243 target and 91 off-target spots\nstored [y, x], converted to the detector's (x, y)\npartitioned into disjoint x-bands", fillcolor="#E7F0F8", color="#0072B2"];
+    measure [label="Measurement  §2.5\nspot photometry, background structure, noise\nand spot density measured from the recording\nreference file of target statistics\n(machine-readable)", fillcolor="#E7F0F8", color="#0072B2"];
+  }
+  subgraph cluster_2 {
+    label="Stage 2 — Simulator  §2.5, §2.6"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    sim [label="Simulator configured from the reference  §2.5\nper-emitter sub-pixel PSF · blinking and\nbleaching · structured background ·\nsoft-core placement\nfully seeded: one seed → one movie, exactly", fillcolor="#FDF0E6", color="#D55E00"];
+    movies [label="Synthetic movies + ground truth\nground truth emitted in two formats §2.5:\n(x, y) label JSON  and  [y, x] coord/class .npy\none dataset per calibration variant", fillcolor="#FDF0E6", color="#D55E00"];
+    harness [label="Validation harness  §2.6\ncompares the simulated movies against the\nsame reference file, through one shared\nestimator module for both sides\nacceptance gates T1–T5, T7", fillcolor="#FDF0E6", color="#D55E00"];
+  }
+  subgraph cluster_3 {
+    label="Stage 3 — Detect + score  §2.3, §2.4"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    detector [label="SCP detector  §2.3\nbandpass background subtraction  →  Laplacian-of-Gaussian\nblob detection  →  KD-tree linking across frames  →  event\nclassification  →  duplicate suppression\nrun on simulated or real movies · 7 free parameters", fillcolor="#F3EDF7", color="#8E5BA6"];
+    scorer [label="Scoring against annotations  §2.4\ngreedy one-to-one assignment within a fixed pixel\nmargin; every detection not matched to a target\ncounts against precision\nrecall · precision · F1", fillcolor="#F3EDF7", color="#8E5BA6"];
+  }
+  subgraph cluster_4 {
+    label="Stage 4 — Search + protocols  §2.7, §2.8"; style="rounded,filled"; fillcolor="#F7F7F7"; color="#DCDCDC"; fontsize=11;
+    search [label="Bayesian optimization  §2.7\na Tree-structured Parzen Estimator samples all seven parameters jointly, so coupled optima stay reachable; seeded, with a per-run timeout\nobjective = F1 of one detector run", fillcolor="#EAF4F0", color="#009E73"];
+    controls [label="Two controls bound the claims\nrandom configurations drawn without the simulator, and the\nsimulator recalibrated with the test band withheld entirely\nseparate the simulator's contribution from selection", fillcolor="#F1F1F1", color="#5A5A5A"];
+    p1 [label="(1)  tune on the real\n       recording\nsearch   real train band\nselect    real validation band\nreport   real test band\n\nspends real labels and\n100+ real detector runs\nhighest held-out F1", fillcolor="#EFF6EA", color="#5C8A2E"];
+    p2 [label="(2)  tune on simulation\n       only\nsearch   simulated train movies\nselect    simulated validation\nreport   real recording, once\n\nno real annotation enters\nthe loop at any point\nthe classic design", fillcolor="#EFF6EA", color="#5C8A2E"];
+    p3 [label="(3)  search on simulation,\n       select on real\nsearch   simulated movies\nselect    real validation band\nreport   real test band\n\nsimulation screens candidates\ncheaply; few reach real data\nthe headline protocol", fillcolor="#EFF6EA", color="#5C8A2E"];
+    p4 [label="(4)  transfer shape, then\n       recalibrate on real\nsearch   simulated movies\nthen      re-fit the intensity\n              threshold on real data\nselect    real validation band\nreport   real test band\nthe threshold is movie-specific", fillcolor="#EFF6EA", color="#5C8A2E"];
+  }
+  real -> annot [label="annotate by hand"];
+  annot -> measure [label="annotated coordinates"];
+  real -> measure [label="pixels"];
+  measure -> sim [label="configure the simulator"];
+  sim -> movies [label="generate, seeded"];
+  movies -> harness [label="check"];
+  measure -> harness [label="the same reference, both sides", style=dashed, color="#8A8A8A"];
+  movies -> detector [label="simulated movies"];
+  real -> detector [label="or the real recording"];
+  detector -> scorer [label="detected events"];
+  annot -> scorer [label="annotations as ground truth", style=dashed, color="#8A8A8A"];
+  scorer -> search [label="F1 of this trial"];
+  search -> detector [label="next parameter set", style=dashed, color="#8A8A8A"];
+  search -> p1;
+  search -> p2;
+  search -> p3;
+  search -> p4;
+  p3 -> controls [style=dashed, color="#8A8A8A"];
+  detector -> measure [label="①  two calibration targets are detector-mediated,\nso the detector runs inside the calibration", color="#B02418", penwidth=2.0, fontcolor="#B02418"];
+  movies -> search [label="②  the simulator's output feeds the search,\nwhose winner is then judged on real data", color="#B02418", penwidth=2.0, fontcolor="#B02418"];
+}

@@ -1,0 +1,107 @@
+[I 2026-07-27 15:00:34,390] A new study created in memory with name: no-name-fbdc0050-11ec-48b4-b297-9ccd0bc60edb
+[I 2026-07-27 15:01:41,821] Trial 0 finished with value: 0.0 and parameters: {'min_sigma': 0.749080237694725, 'max_sigma': 4.795419040477999, 'intensity_threshold': 0.3686770314875885, 'circular_threshold': 0.6387926357773329, 'max_displacement': 1.2020838819909643, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.07613762547568977}. Best is trial 0 with value: 0.0.
+[I 2026-07-27 15:02:51,251] Trial 1 finished with value: 0.0 and parameters: {'min_sigma': 1.7323522915498704, 'max_sigma': 3.7364728810132184, 'intensity_threshold': 0.35695556312006227, 'circular_threshold': 0.1185260448662222, 'max_displacement': 4.864594334728975, 'min_pulsation_frames': 26, 'intensity_variation_threshold': 0.14555259980522428}. Best is trial 0 with value: 0.0.
+[I 2026-07-27 15:05:07,172] Trial 2 finished with value: 0.16219547561298922 and parameters: {'min_sigma': 0.36364993441420124, 'max_sigma': 1.325320294340452, 'intensity_threshold': 0.1590786990501735, 'circular_threshold': 0.5722807884690141, 'max_displacement': 2.4437525838895207, 'min_pulsation_frames': 11, 'intensity_variation_threshold': 0.3253338026250708}. Best is trial 2 with value: 0.16219547561298922.
+[I 2026-07-27 15:07:19,261] Trial 3 finished with value: 0.6756238187039713 and parameters: {'min_sigma': 0.27898772130408367, 'max_sigma': 1.8146509184084816, 'intensity_threshold': 0.18951730321390894, 'circular_threshold': 0.5104629857953323, 'max_displacement': 4.033291826268561, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.28140549728612524}. Best is trial 3 with value: 0.6756238187039713.
+[I 2026-07-27 15:08:23,211] Trial 4 finished with value: 0.0 and parameters: {'min_sigma': 1.184829137724085, 'max_sigma': 1.457400357602111, 'intensity_threshold': 0.3076969774317048, 'circular_threshold': 0.2534717113185624, 'max_displacement': 0.7927321684337578, 'min_pulsation_frames': 29, 'intensity_variation_threshold': 0.4845344148835517}. Best is trial 3 with value: 0.6756238187039713.
+=== generating reduced dataset ===
+[seed 0] 200 dots, 40 frames, profile=high (SNR ~ 1.62)
+[seed 0] labels: 170 positive, 30 negative
+[seed 0] frame 0/40
+[seed 0] saved C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\local_run_results\dataset\train\rep0.tif  shape=(40, 512, 512)
+[seed 1] 200 dots, 40 frames, profile=high (SNR ~ 1.62)
+[seed 1] labels: 170 positive, 30 negative
+[seed 1] frame 0/40
+[seed 1] saved C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\local_run_results\dataset\train\rep1.tif  shape=(40, 512, 512)
+[seed 2] 200 dots, 40 frames, profile=high (SNR ~ 1.62)
+[seed 2] labels: 170 positive, 30 negative
+[seed 2] frame 0/40
+[seed 2] saved C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\local_run_results\dataset\train\rep2.tif  shape=(40, 512, 512)
+[seed 1000] 200 dots, 40 frames, profile=high (SNR ~ 1.62)
+[seed 1000] labels: 170 positive, 30 negative
+[seed 1000] frame 0/40
+[seed 1000] saved C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\local_run_results\dataset\val\rep1000.tif  shape=(40, 512, 512)
+[seed 1001] 200 dots, 40 frames, profile=high (SNR ~ 1.62)
+[seed 1001] labels: 170 positive, 30 negative
+[seed 1001] frame 0/40
+[seed 1001] saved C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\local_run_results\dataset\val\rep1001.tif  shape=(40, 512, 512)
+manifest -> C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\local_run_results\dataset\manifest.json
+
+=== running train -> validate -> test pipeline ===
+Loading dataset manifest...
+  train movies: 3  |  val movies: 2
+  meta: {'frames': 40, 'note': 'reduced local smoke run'}
+================================================================================
+STAGE 1/3 - TRAIN: Optuna TPE search over the training movies
+Trials: 5  |  detector runs/trial: 3
+================================================================================
+Mode: SINGLE-objective (maximize mean F1)
+
+[trial 0] {'min_sigma': 0.749080237694725, 'max_sigma': 4.795419040477999, 'intensity_threshold': 0.3686770314875885, 'circular_threshold': 0.6387926357773329, 'max_displacement': 1.2020838819909643, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.07613762547568977}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+    train:rep2: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+[trial 1] {'min_sigma': 1.7323522915498704, 'max_sigma': 3.7364728810132184, 'intensity_threshold': 0.35695556312006227, 'circular_threshold': 0.1185260448662222, 'max_displacement': 4.864594334728975, 'min_pulsation_frames': 26, 'intensity_variation_threshold': 0.14555259980522428}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+    train:rep2: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+[trial 2] {'min_sigma': 0.36364993441420124, 'max_sigma': 1.325320294340452, 'intensity_threshold': 0.1590786990501735, 'circular_threshold': 0.5722807884690141, 'max_displacement': 2.4437525838895207, 'min_pulsation_frames': 11, 'intensity_variation_threshold': 0.3253338026250708}
+    train:rep0: F1=0.1604 R=8.82% P=88.24%
+    train:rep1: F1=0.1780 R=10.00% P=80.95%
+    train:rep2: F1=0.1481 R=8.24% P=73.68%
+  -> TRAIN mean F1=0.1622 R=9.02% P=80.96%
+
+[trial 3] {'min_sigma': 0.27898772130408367, 'max_sigma': 1.8146509184084816, 'intensity_threshold': 0.18951730321390894, 'circular_threshold': 0.5104629857953323, 'max_displacement': 4.033291826268561, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.28140549728612524}
+    train:rep0: F1=0.6935 R=91.18% P=55.96%
+    train:rep1: F1=0.6784 R=90.59% P=54.23%
+    train:rep2: F1=0.6549 R=87.65% P=52.28%
+  -> TRAIN mean F1=0.6756 R=89.80% P=54.15%
+
+[trial 4] {'min_sigma': 1.184829137724085, 'max_sigma': 1.457400357602111, 'intensity_threshold': 0.3076969774317048, 'circular_threshold': 0.2534717113185624, 'max_displacement': 0.7927321684337578, 'min_pulsation_frames': 29, 'intensity_variation_threshold': 0.4845344148835517}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+    train:rep2: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+================================================================================
+STAGE 2/3 - VALIDATE: re-scoring top 3 candidates on the validation movies
+================================================================================
+    val:rep1000: F1=0.6941 R=89.41% P=56.72%
+    val:rep1001: F1=0.7120 R=92.35% P=57.93%
+  [trial 3] TRAIN F1=0.6756 -> VAL F1=0.7030 (R=90.88% P=57.32%)
+    val:rep1000: F1=0.1263 R=7.06% P=60.00%
+    val:rep1001: F1=0.1675 R=9.41% P=76.19%
+  [trial 2] TRAIN F1=0.1622 -> VAL F1=0.1469 (R=8.24% P=68.10%)
+    val:rep1000: F1=0.0000 R=0.00% P=0.00%
+    val:rep1001: F1=0.0000 R=0.00% P=0.00%
+  [trial 0] TRAIN F1=0.0000 -> VAL F1=0.0000 (R=0.00% P=0.00%)
+
+Selected trial 3 (TRAIN F1=0.6756, VAL F1=0.7030)
+Final parameters:
+  min_sigma: 0.27898772130408367
+  max_sigma: 1.8146509184084816
+  intensity_threshold: 0.18951730321390894
+  circular_threshold: 0.5104629857953323
+  max_displacement: 4.033291826268561
+  min_pulsation_frames: 8
+  intensity_variation_threshold: 0.28140549728612524
+
+================================================================================
+STAGE 3/3 - TEST: scoring the final config on the real movie (ONCE)
+================================================================================
+Test movie not found (set TEST_TIF/TEST_POSITIVE/TEST_NEGATIVE). Skipping test.
+
+================================================================================
+GENERALIZATION SUMMARY (mean F-beta)
+  TRAIN: 0.6756
+  VAL:   0.7030
+  TEST:  (skipped)
+================================================================================
+
+Results saved to C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\local_run_results\optimization_results.json
+
+=== DONE ===

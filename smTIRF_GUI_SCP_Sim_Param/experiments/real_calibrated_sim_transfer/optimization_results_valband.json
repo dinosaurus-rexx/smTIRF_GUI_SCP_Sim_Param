@@ -1,0 +1,283 @@
+{
+  "method": "sim_guided_real",
+  "fbeta": 1.0,
+  "n_trials": 30,
+  "dataset_meta": {
+    "generator": "Simulation/simulate.py",
+    "driver": "Simulation/generate_dataset.py",
+    "config_path": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\config\\real_calibrated_valband.yaml",
+    "calibrated_against": "BachelorThesis-FRETAlgorithms/realdata/vid_ch1.tiff",
+    "reference": "Simulation/config/real_movie_reference.json",
+    "python": "3.12.8",
+    "numpy": "2.4.3",
+    "train_seeds": [
+      0,
+      1,
+      2
+    ],
+    "val_seeds": [
+      1000,
+      1001
+    ],
+    "resolved_config": {
+      "global_settings": {
+        "n_frames": 501,
+        "height": 256,
+        "width": 512,
+        "dtype": "uint16",
+        "psf_sigma": 1.55,
+        "gain_adu_per_photon": 5.0,
+        "read_noise_adu": 3.8,
+        "saturation": 65535
+      },
+      "background": {
+        "base_level": 147.19,
+        "static_std": 8.57,
+        "drift_std": 5.46,
+        "smooth_sigma": 12.6,
+        "drift_knots": 4,
+        "drift_mean_std": 4.1
+      },
+      "placement": {
+        "min_distance": 3.5,
+        "soft_distance": 6.0,
+        "soft_gamma": 3.0,
+        "margin": 2.0
+      },
+      "target": {
+        "activate": true,
+        "display_name": "Target molecule",
+        "count": 264,
+        "params": {
+          "peak_amplitude_median": 120.0,
+          "peak_amplitude_sigma_log": 0.36,
+          "tau_on": 350,
+          "tau_off": 115.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "off_target": {
+        "activate": true,
+        "display_name": "Off-target spot",
+        "count": 98,
+        "params": {
+          "psf_sigma": 1.63,
+          "peak_amplitude_median": 93.4,
+          "peak_amplitude_sigma_log": 0.047,
+          "tau_on": 120.0,
+          "tau_off": 265.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "unannotated": {
+        "activate": true,
+        "display_name": "Unannotated emitter (unlabelled clutter)",
+        "count": 500,
+        "params": {
+          "peak_amplitude_median": 70.0,
+          "peak_amplitude_sigma_log": 0.25,
+          "tau_on": 90.0,
+          "tau_off": 200.0,
+          "tau_bleach": 0.0,
+          "bleach_shape": 3.0,
+          "already_active_fraction": 1.0,
+          "activation_tau": 0.0,
+          "on_amplitude_cv": 0.25
+        }
+      },
+      "moving": {
+        "activate": false,
+        "display_name": "Moving spot",
+        "count": 0,
+        "params": {
+          "peak_amplitude_median": 120.0,
+          "peak_amplitude_sigma_log": 0.5,
+          "tau_on": 0.0,
+          "tau_off": 1.0,
+          "tau_bleach": 60.0,
+          "bleach_shape": 1.0,
+          "already_active_fraction": 0.2,
+          "activation_tau": 150.0,
+          "on_amplitude_cv": 0.2,
+          "step_size": 1.0
+        }
+      }
+    },
+    "records": [
+      {
+        "split": "train",
+        "seed": 0,
+        "tif": "dataset_valband\\train\\rep0.tif"
+      },
+      {
+        "split": "train",
+        "seed": 1,
+        "tif": "dataset_valband\\train\\rep1.tif"
+      },
+      {
+        "split": "train",
+        "seed": 2,
+        "tif": "dataset_valband\\train\\rep2.tif"
+      },
+      {
+        "split": "val",
+        "seed": 1000,
+        "tif": "dataset_valband\\val\\rep1000.tif"
+      },
+      {
+        "split": "val",
+        "seed": 1001,
+        "tif": "dataset_valband\\val\\rep1001.tif"
+      }
+    ]
+  },
+  "final_parameters": {
+    "min_sigma": 0.42124089600940656,
+    "max_sigma": 3.05620426388049,
+    "intensity_threshold": 0.4114589943145191,
+    "circular_threshold": 0.4105192948067437,
+    "max_displacement": 2.8300306752280697,
+    "min_pulsation_frames": 3,
+    "intensity_variation_threshold": 0.09636919447395745
+  },
+  "final_trial_number": 26,
+  "sim_train_fbeta": 0.5897601918465227,
+  "real_val_metrics": {
+    "fbeta": 0.5377358490566038,
+    "weighted_score": 0.5440909090909092,
+    "recall": 0.4318181818181818,
+    "precision": 0.7125,
+    "true_positives": 57,
+    "false_negatives": 75,
+    "false_positives": 23,
+    "true_negatives": 34,
+    "negatives_hit": 15,
+    "detected_count": 80,
+    "error": null
+  },
+  "real_test_metrics": {
+    "fbeta": 0.6851851851851851,
+    "weighted_score": 0.6819047619047619,
+    "recall": 0.6666666666666666,
+    "precision": 0.7047619047619048,
+    "true_positives": 74,
+    "false_negatives": 37,
+    "false_positives": 31,
+    "true_negatives": 26,
+    "negatives_hit": 16,
+    "detected_count": 105,
+    "error": null
+  },
+  "candidates": [
+    {
+      "trial": 13,
+      "params": {
+        "min_sigma": 0.48771380089855554,
+        "max_sigma": 1.95271754131244,
+        "intensity_threshold": 0.3670005103014744,
+        "circular_threshold": 0.33032562634084267,
+        "max_displacement": 1.403736791832742,
+        "min_pulsation_frames": 7,
+        "intensity_variation_threshold": 0.056211883839528826
+      },
+      "sim_train_fbeta": 0.6749884662164995,
+      "real_val_fbeta": 0.466321243523316,
+      "real_test_fbeta": 0.5591397849462365
+    },
+    {
+      "trial": 26,
+      "params": {
+        "min_sigma": 0.42124089600940656,
+        "max_sigma": 3.05620426388049,
+        "intensity_threshold": 0.4114589943145191,
+        "circular_threshold": 0.4105192948067437,
+        "max_displacement": 2.8300306752280697,
+        "min_pulsation_frames": 3,
+        "intensity_variation_threshold": 0.09636919447395745
+      },
+      "sim_train_fbeta": 0.5897601918465227,
+      "real_val_fbeta": 0.5377358490566038,
+      "real_test_fbeta": 0.6851851851851851
+    },
+    {
+      "trial": 15,
+      "params": {
+        "min_sigma": 0.4650558406584023,
+        "max_sigma": 0.6036219335262882,
+        "intensity_threshold": 0.383363624898016,
+        "circular_threshold": 0.38094366805813085,
+        "max_displacement": 1.3816804484833045,
+        "min_pulsation_frames": 3,
+        "intensity_variation_threshold": 0.07930066561601272
+      },
+      "sim_train_fbeta": 0.41349362911130133,
+      "real_val_fbeta": 0.2711864406779661,
+      "real_test_fbeta": 0.34523809523809523
+    },
+    {
+      "trial": 27,
+      "params": {
+        "min_sigma": 0.4103584181796729,
+        "max_sigma": 3.0732983384219947,
+        "intensity_threshold": 0.4666461686069101,
+        "circular_threshold": 0.40355905671901854,
+        "max_displacement": 3.7632269736473623,
+        "min_pulsation_frames": 4,
+        "intensity_variation_threshold": 0.10883323951052296
+      },
+      "sim_train_fbeta": 0.35928143712574856,
+      "real_val_fbeta": 0.37569060773480667,
+      "real_test_fbeta": 0.5028571428571429
+    },
+    {
+      "trial": 21,
+      "params": {
+        "min_sigma": 1.0470924813035565,
+        "max_sigma": 2.134325929613211,
+        "intensity_threshold": 0.3500484266320486,
+        "circular_threshold": 0.5280415913390867,
+        "max_displacement": 3.197913283019086,
+        "min_pulsation_frames": 3,
+        "intensity_variation_threshold": 0.07530972695588206
+      },
+      "sim_train_fbeta": 0.33635959056519804,
+      "real_val_fbeta": 0.21935483870967742,
+      "real_test_fbeta": 0.43421052631578944
+    },
+    {
+      "trial": 24,
+      "params": {
+        "min_sigma": 1.490764177574563,
+        "max_sigma": 2.0516752841212362,
+        "intensity_threshold": 0.337685412970926,
+        "circular_threshold": 0.3350929287386257,
+        "max_displacement": 2.0790562386996783,
+        "min_pulsation_frames": 5,
+        "intensity_variation_threshold": 0.0753766320790829
+      },
+      "sim_train_fbeta": 0.33164946189325717,
+      "real_val_fbeta": 0.125,
+      "real_test_fbeta": 0.16260162601626016
+    }
+  ],
+  "arm": "valband",
+  "arm_note": "simulator calibrated against the real validation band only (x 0-256), so the test band influenced nothing",
+  "dataset_manifest": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\Simulation\\dataset_valband\\manifest.json",
+  "n_train_movies": 2,
+  "elapsed_seconds": 11703.6,
+  "python": "3.12.8",
+  "benchmarks": {
+    "bt_sim_tuned_real_test_f1": 0.256,
+    "direct_real_test_f1": 0.847,
+    "t6_target_f1": 0.7
+  },
+  "t6_pass": false
+}

@@ -1,0 +1,4 @@
+Class,Raw_Count,Filtered_Count,Retention,Recall_Raw,Recall_Filtered
+Target Interactions,102,70,0.6862745098039216,0.918918918918919,0.6306306306306306
+Off-Target Interactions,32,6,0.1875,0.7619047619047619,0.14285714285714285
+Pure Noise,11,3,0.2727272727272727,0.0,0.0

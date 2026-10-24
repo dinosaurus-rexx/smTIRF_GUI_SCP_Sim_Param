@@ -1,0 +1,321 @@
+{
+  "experiment": "random_search_control",
+  "note": "no simulator; uniform draws from the same bounds, real-val selection",
+  "n_candidates": 6,
+  "seed": 0,
+  "bounds": {
+    "min_sigma": [
+      0.0,
+      1.5
+    ],
+    "max_sigma": [
+      0.5,
+      3.5
+    ],
+    "intensity_threshold": [
+      0.25,
+      0.5
+    ],
+    "circular_threshold": [
+      0.1,
+      0.6
+    ],
+    "max_displacement": [
+      0.5,
+      5.0
+    ],
+    "min_pulsation_frames": [
+      3,
+      15
+    ],
+    "intensity_variation_threshold": [
+      0.05,
+      0.25
+    ]
+  },
+  "val_band": [
+    0,
+    256
+  ],
+  "test_band": [
+    256,
+    512
+  ],
+  "candidates": [
+    {
+      "index": 0,
+      "params": {
+        "min_sigma": 0.9554425309821815,
+        "max_sigma": 1.714951657155423,
+        "intensity_threshold": 0.26024338098404864,
+        "circular_threshold": 0.10826381776426455,
+        "max_displacement": 4.159716076401226,
+        "min_pulsation_frames": 11,
+        "intensity_variation_threshold": 0.171327155153436
+      },
+      "val": {
+        "fbeta": 0.02985074626865672,
+        "weighted_score": 0.4090909090909091,
+        "recall": 0.015151515151515152,
+        "precision": 1.0,
+        "true_positives": 2,
+        "false_negatives": 130,
+        "false_positives": 0,
+        "true_negatives": 49,
+        "negatives_hit": 0,
+        "detected_count": 2,
+        "error": null
+      },
+      "test": {
+        "fbeta": 0.06837606837606838,
+        "weighted_score": 0.2882882882882883,
+        "recall": 0.036036036036036036,
+        "precision": 0.6666666666666666,
+        "true_positives": 4,
+        "false_negatives": 107,
+        "false_positives": 2,
+        "true_negatives": 40,
+        "negatives_hit": 2,
+        "detected_count": 6,
+        "error": null
+      }
+    },
+    {
+      "index": 1,
+      "params": {
+        "min_sigma": 1.0942448414759975,
+        "max_sigma": 2.4477109698499633,
+        "intensity_threshold": 0.4837681059469421,
+        "circular_threshold": 0.507926777060766,
+        "max_displacement": 0.5123232507656664,
+        "min_pulsation_frames": 14,
+        "intensity_variation_threshold": 0.22148085531751388
+      },
+      "val": {
+        "fbeta": 0.0,
+        "weighted_score": 0.0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "true_positives": 0,
+        "false_negatives": 132,
+        "false_positives": 0,
+        "true_negatives": 49,
+        "negatives_hit": 0,
+        "detected_count": 0,
+        "error": null
+      },
+      "test": {
+        "fbeta": 0.0,
+        "weighted_score": 0.0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "true_positives": 0,
+        "false_negatives": 111,
+        "false_positives": 0,
+        "true_negatives": 42,
+        "negatives_hit": 0,
+        "detected_count": 0,
+        "error": null
+      }
+    },
+    {
+      "index": 2,
+      "params": {
+        "min_sigma": 0.05037836295819653,
+        "max_sigma": 2.6889663392898324,
+        "intensity_threshold": 0.29391390515063975,
+        "circular_threshold": 0.5315894611749433,
+        "max_displacement": 2.9365754911209128,
+        "min_pulsation_frames": 4,
+        "intensity_variation_threshold": 0.13453744423953168
+      },
+      "val": {
+        "fbeta": 0.1927710843373494,
+        "weighted_score": 0.2609625668449198,
+        "recall": 0.12121212121212122,
+        "precision": 0.47058823529411764,
+        "true_positives": 16,
+        "false_negatives": 116,
+        "false_positives": 18,
+        "true_negatives": 39,
+        "negatives_hit": 10,
+        "detected_count": 34,
+        "error": null
+      },
+      "test": {
+        "fbeta": 0.3975903614457832,
+        "weighted_score": 0.4183783783783784,
+        "recall": 0.2972972972972973,
+        "precision": 0.6,
+        "true_positives": 33,
+        "false_negatives": 78,
+        "false_positives": 22,
+        "true_negatives": 34,
+        "negatives_hit": 8,
+        "detected_count": 55,
+        "error": null
+      }
+    },
+    {
+      "index": 3,
+      "params": {
+        "min_sigma": 0.04247950671819445,
+        "max_sigma": 0.8728498294986918,
+        "intensity_threshold": 0.41765610367340755,
+        "circular_threshold": 0.423594755787125,
+        "max_displacement": 3.2692330016656426,
+        "min_pulsation_frames": 6,
+        "intensity_variation_threshold": 0.1267355108523767
+      },
+      "val": {
+        "fbeta": 0.4851485148514851,
+        "weighted_score": 0.5027272727272727,
+        "recall": 0.3712121212121212,
+        "precision": 0.7,
+        "true_positives": 49,
+        "false_negatives": 83,
+        "false_positives": 21,
+        "true_negatives": 35,
+        "negatives_hit": 14,
+        "detected_count": 70,
+        "error": null
+      },
+      "test": {
+        "fbeta": 0.45054945054945056,
+        "weighted_score": 0.45260753711457935,
+        "recall": 0.36936936936936937,
+        "precision": 0.5774647887323944,
+        "true_positives": 41,
+        "false_negatives": 70,
+        "false_positives": 30,
+        "true_negatives": 31,
+        "negatives_hit": 11,
+        "detected_count": 71,
+        "error": null
+      }
+    },
+    {
+      "index": 4,
+      "params": {
+        "min_sigma": 1.4958149036838164,
+        "max_sigma": 3.463506937721749,
+        "intensity_threshold": 0.4213854961201737,
+        "circular_threshold": 0.4252296381339081,
+        "max_displacement": 3.59801028756923,
+        "min_pulsation_frames": 12,
+        "intensity_variation_threshold": 0.07701930100448225
+      },
+      "val": {
+        "fbeta": 0.044444444444444446,
+        "weighted_score": 0.41363636363636364,
+        "recall": 0.022727272727272728,
+        "precision": 1.0,
+        "true_positives": 3,
+        "false_negatives": 129,
+        "false_positives": 0,
+        "true_negatives": 49,
+        "negatives_hit": 0,
+        "detected_count": 3,
+        "error": null
+      },
+      "test": {
+        "fbeta": 0.035398230088495575,
+        "weighted_score": 0.41081081081081083,
+        "recall": 0.018018018018018018,
+        "precision": 1.0,
+        "true_positives": 2,
+        "false_negatives": 109,
+        "false_positives": 0,
+        "true_negatives": 42,
+        "negatives_hit": 0,
+        "detected_count": 2,
+        "error": null
+      }
+    },
+    {
+      "index": 5,
+      "params": {
+        "min_sigma": 1.0822325102911226,
+        "max_sigma": 2.3998816795033937,
+        "intensity_threshold": 0.3275604688897389,
+        "circular_threshold": 0.34291767941589457,
+        "max_displacement": 4.502695254570501,
+        "min_pulsation_frames": 8,
+        "intensity_variation_threshold": 0.23680870319124997
+      },
+      "val": {
+        "fbeta": 0.0,
+        "weighted_score": 0.0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "true_positives": 0,
+        "false_negatives": 132,
+        "false_positives": 0,
+        "true_negatives": 49,
+        "negatives_hit": 0,
+        "detected_count": 0,
+        "error": null
+      },
+      "test": {
+        "fbeta": 0.0,
+        "weighted_score": 0.0,
+        "recall": 0.0,
+        "precision": 0.0,
+        "true_positives": 0,
+        "false_negatives": 111,
+        "false_positives": 0,
+        "true_negatives": 42,
+        "negatives_hit": 0,
+        "detected_count": 0,
+        "error": null
+      }
+    }
+  ],
+  "selected": {
+    "index": 3,
+    "params": {
+      "min_sigma": 0.04247950671819445,
+      "max_sigma": 0.8728498294986918,
+      "intensity_threshold": 0.41765610367340755,
+      "circular_threshold": 0.423594755787125,
+      "max_displacement": 3.2692330016656426,
+      "min_pulsation_frames": 6,
+      "intensity_variation_threshold": 0.1267355108523767
+    },
+    "val": {
+      "fbeta": 0.4851485148514851,
+      "weighted_score": 0.5027272727272727,
+      "recall": 0.3712121212121212,
+      "precision": 0.7,
+      "true_positives": 49,
+      "false_negatives": 83,
+      "false_positives": 21,
+      "true_negatives": 35,
+      "negatives_hit": 14,
+      "detected_count": 70,
+      "error": null
+    },
+    "test": {
+      "fbeta": 0.45054945054945056,
+      "weighted_score": 0.45260753711457935,
+      "recall": 0.36936936936936937,
+      "precision": 0.5774647887323944,
+      "true_positives": 41,
+      "false_negatives": 70,
+      "false_positives": 30,
+      "true_negatives": 31,
+      "negatives_hit": 11,
+      "detected_count": 71,
+      "error": null
+    }
+  },
+  "real_test_fbeta": 0.45054945054945056,
+  "benchmarks": {
+    "sim_guided": 0.7143,
+    "sim_score_only": 0.5591,
+    "bt_sim": 0.256,
+    "direct_real_handtuned": 0.8468
+  },
+  "elapsed_seconds": 980.6,
+  "python": "3.12.8"
+}

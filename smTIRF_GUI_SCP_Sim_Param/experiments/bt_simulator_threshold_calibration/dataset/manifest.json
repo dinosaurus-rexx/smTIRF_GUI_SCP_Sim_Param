@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "source": "BachelorThesis-FRETAlgorithms/scripts/data_analysis/data_simulation.py",
+    "borrowed_config": "realdata.yaml",
+    "frames": 300,
+    "img_size": 256,
+    "counts": {
+      "stationary": 90,
+      "aggregate": 45,
+      "moving": 25
+    },
+    "background_level": 0.3,
+    "read_noise": 8.0,
+    "channel": 1,
+    "channel_note": "single channel (acceptor); summing cancels the FRET intensity variation"
+  },
+  "train": [
+    {
+      "seed": 0,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep0.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep0_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep0_negative.json",
+      "n_positive": 90,
+      "n_negative": 45
+    },
+    {
+      "seed": 1,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep1.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep1_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep1_negative.json",
+      "n_positive": 90,
+      "n_negative": 45
+    },
+    {
+      "seed": 2,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep2.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep2_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\train\\rep2_negative.json",
+      "n_positive": 90,
+      "n_negative": 45
+    }
+  ],
+  "val": [
+    {
+      "seed": 1000,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\val\\rep1000.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\val\\rep1000_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\val\\rep1000_negative.json",
+      "n_positive": 90,
+      "n_negative": 45
+    },
+    {
+      "seed": 1001,
+      "tif": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\val\\rep1001.tif",
+      "positive": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\val\\rep1001_positive.json",
+      "negative": "C:\\Users\\NahuelJimenezPol\\Desktop\\Const\\smTIRF_GUI_SCP_Sim_Param\\smTIRF_GUI_SCP_Sim_Param\\bt_run_results\\dataset\\val\\rep1001_negative.json",
+      "n_positive": 90,
+      "n_negative": 45
+    }
+  ]
+}

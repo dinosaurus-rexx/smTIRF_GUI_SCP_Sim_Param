@@ -1,0 +1,26 @@
+# Real-calibrated smTIRF simulator + validation harness.
+#
+# Verified on Python 3.12.8 with the versions noted on the right. The floors are what
+# the code actually needs, not what happened to be installed:
+#   numpy >= 1.24        SeedSequence.spawn, used for the per-stream seeding of R6
+#   scipy >= 1.10        stats.gamma.ppf, stats.ks_2samp, spatial.cKDTree, ndimage
+#   scikit-image         blob_log. Keep this matched to the version SCP itself runs
+#                        under: gate T2 compares blob counts against recorded numbers,
+#                        so a change in blob_log's behaviour would look like a
+#                        simulator regression.
+#   tifffile             (T, H, W) uint16 writing with imagej metadata (spec 6d)
+#   PyYAML               the config format (R6)
+#   matplotlib           the harness's side-by-side plots (Agg, headless)
+#
+# Deliberately NOT listed, because they belong to the consumers rather than to this
+# package -- but needed to run the detector or gate T6:
+#   opencv-python        SCP/SCP_KTree_JSON.py (circularity via cv2.findContours)
+#   optuna               Parameter_opt/SCP_parametrizer_002.py (the T6 search)
+#   pandas               imported by SCP at module scope
+
+numpy>=1.24          # tested: 2.4.3
+scipy>=1.10          # tested: 1.17.1
+scikit-image>=0.20   # tested: 0.26.0
+tifffile>=2023.1.1   # tested: 2026.6.1
+PyYAML>=6.0          # tested: 6.0.3
+matplotlib>=3.6      # tested: 3.10.8

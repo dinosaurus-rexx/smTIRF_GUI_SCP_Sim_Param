@@ -1,0 +1,256 @@
+[I 2026-07-31 22:46:35,375] A new study created in memory with name: no-name-11a6f9a1-31b6-42b8-9d98-7db739983e9e
+[I 2026-07-31 22:50:19,980] Trial 0 finished with value: 0.245281543274244 and parameters: {'min_sigma': 0.5618101782710437, 'max_sigma': 3.360117846095772, 'intensity_threshold': 0.43299848545285125, 'circular_threshold': 0.3993292420985183, 'max_displacement': 1.2020838819909643, 'min_pulsation_frames': 5, 'intensity_variation_threshold': 0.061616722433639894}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 22:53:59,783] Trial 1 finished with value: 0.10144662149789416 and parameters: {'min_sigma': 1.2992642186624028, 'max_sigma': 2.6620480325305316, 'intensity_threshold': 0.42701814444901137, 'circular_threshold': 0.11029224714790123, 'max_displacement': 4.864594334728975, 'min_pulsation_frames': 13, 'intensity_variation_threshold': 0.09246782213565524}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:03:56,308] Trial 2 finished with value: 0.04003577526628181 and parameters: {'min_sigma': 0.2727374508106509, 'max_sigma': 1.0502135295603015, 'intensity_threshold': 0.32606056073988443, 'circular_threshold': 0.36237821581611895, 'max_displacement': 2.4437525838895207, 'min_pulsation_frames': 6, 'intensity_variation_threshold': 0.17237057894447588}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:13:24,395] Trial 3 finished with value: 0.15375408358679735 and parameters: {'min_sigma': 0.20924079097806275, 'max_sigma': 1.3764339456056545, 'intensity_threshold': 0.3415904608234229, 'circular_threshold': 0.32803499210851794, 'max_displacement': 4.033291826268561, 'min_pulsation_frames': 5, 'intensity_variation_threshold': 0.1528468876827223}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:16:47,408] Trial 4 finished with value: 0.0 and parameters: {'min_sigma': 0.8886218532930636, 'max_sigma': 1.105276404703584, 'intensity_threshold': 0.4018862129753596, 'circular_threshold': 0.18526206184364577, 'max_displacement': 0.7927321684337578, 'min_pulsation_frames': 15, 'intensity_variation_threshold': 0.24312640661491186}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:20:34,367] Trial 5 finished with value: 0.00819672131147541 and parameters: {'min_sigma': 1.2125960221746916, 'max_sigma': 1.978909392564883, 'intensity_threshold': 0.27441802850159597, 'circular_threshold': 0.4421165132560785, 'max_displacement': 2.480686221828206, 'min_pulsation_frames': 4, 'intensity_variation_threshold': 0.14903538202225403}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:31:30,053] Trial 6 finished with value: 0.02032520325203252 and parameters: {'min_sigma': 0.05158278167282759, 'max_sigma': 3.2279612062363463, 'intensity_threshold': 0.31469499540000423, 'circular_threshold': 0.43126114217699096, 'max_displacement': 1.9026998424023494, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.15934205586865594}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:38:50,614] Trial 7 finished with value: 0.0 and parameters: {'min_sigma': 0.27728168328829056, 'max_sigma': 3.4087538832936755, 'intensity_threshold': 0.44378320584027864, 'circular_threshold': 0.5697494707820946, 'max_displacement': 4.526723076924419, 'min_pulsation_frames': 10, 'intensity_variation_threshold': 0.23437484700462335}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:54:07,172] Trial 8 finished with value: 0.00816326530612245 and parameters: {'min_sigma': 0.13273875307787925, 'max_sigma': 1.0879485872574355, 'intensity_threshold': 0.2613068222276345, 'circular_threshold': 0.2626651653816322, 'max_displacement': 2.249047803602669, 'min_pulsation_frames': 6, 'intensity_variation_threshold': 0.21574750183038588}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-07-31 23:57:33,987] Trial 9 finished with value: 0.0 and parameters: {'min_sigma': 0.5351299900403839, 'max_sigma': 1.4399708416064703, 'intensity_threshold': 0.38567402078956214, 'circular_threshold': 0.17046211248738133, 'max_displacement': 4.109886413393179, 'min_pulsation_frames': 3, 'intensity_variation_threshold': 0.24737738732010345}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-08-01 00:01:08,270] Trial 10 finished with value: 0.05596889550232803 and parameters: {'min_sigma': 0.7704950355933128, 'max_sigma': 2.3399962469244593, 'intensity_threshold': 0.4923842776969664, 'circular_threshold': 0.5661451709558936, 'max_displacement': 0.5974256553391994, 'min_pulsation_frames': 10, 'intensity_variation_threshold': 0.05311895993169126}. Best is trial 0 with value: 0.245281543274244.
+[I 2026-08-01 00:04:49,498] Trial 11 finished with value: 0.31456905878110347 and parameters: {'min_sigma': 0.5039140407958771, 'max_sigma': 1.7611226164428453, 'intensity_threshold': 0.3592967364030507, 'circular_threshold': 0.32172051411693436, 'max_displacement': 3.4418164036761016, 'min_pulsation_frames': 6, 'intensity_variation_threshold': 0.10844769310039729}. Best is trial 11 with value: 0.31456905878110347.
+[I 2026-08-01 00:08:27,067] Trial 12 finished with value: 0.056 and parameters: {'min_sigma': 0.6149540006100314, 'max_sigma': 2.889103760401528, 'intensity_threshold': 0.4839765550306897, 'circular_threshold': 0.4752091519213957, 'max_displacement': 3.359795799319771, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.09207979880638492}. Best is trial 11 with value: 0.31456905878110347.
+[I 2026-08-01 00:12:14,578] Trial 13 finished with value: 0.7582362082362082 and parameters: {'min_sigma': 0.48771380089855554, 'max_sigma': 1.95271754131244, 'intensity_threshold': 0.3670005103014744, 'circular_threshold': 0.33032562634084267, 'max_displacement': 1.403736791832742, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.056211883839528826}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:15:47,584] Trial 14 finished with value: 0.07142857142857142 and parameters: {'min_sigma': 0.9765237047573919, 'max_sigma': 1.9380793305506534, 'intensity_threshold': 0.3681228817386659, 'circular_threshold': 0.2879737596132028, 'max_displacement': 3.2316256930244736, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.11086281551350838}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:20:16,033] Trial 15 finished with value: 0.11921773990739506 and parameters: {'min_sigma': 0.4650558406584023, 'max_sigma': 0.6036219335262882, 'intensity_threshold': 0.2958975057662129, 'circular_threshold': 0.25477274099129527, 'max_displacement': 1.4469324266240355, 'min_pulsation_frames': 12, 'intensity_variation_threshold': 0.11699331436108468}. Best is trial 13 with value: 0.7582362082362082.
+==============================================================================
+GATE T6 -- ARM 'full'
+==============================================================================
+  simulator calibrated against the whole real movie (spec T6 as written; the test band influenced the simulator's calibration)
+  dataset   : C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\Simulation\dataset\manifest.json
+  trials    : 30   top-k: 6
+  bands     : val x(0, 256)  test x(256, 512)
+  scorer    : compute_metrics, MATCH_MARGIN=3, F-beta=1.0  (untouched)
+  detector  : bandpass=True sigma=8.0 event_nms=3.0 aperture=0.0
+  benchmarks: BT-sim-tuned 0.256 | direct-real 0.847 | T6 target >= 0.70
+  sim train : 2 movie(s) -> ['train:rep0', 'train:rep1']
+Loading dataset manifest (simulation, for the search)...
+  sim train movies: 2 (val movies unused in this method)
+  real positives: 243  (val band: 132, test band: 111)
+================================================================================
+STAGE 1/2 - SIM SEARCH: Optuna TPE, 30 trials on 2 sim movies
+================================================================================
+Mode: SINGLE-objective (maximize mean F1)
+
+[trial 0] {'min_sigma': 0.5618101782710437, 'max_sigma': 3.360117846095772, 'intensity_threshold': 0.43299848545285125, 'circular_threshold': 0.3993292420985183, 'max_displacement': 1.2020838819909643, 'min_pulsation_frames': 5, 'intensity_variation_threshold': 0.061616722433639894}
+    train:rep0: F1=0.2643 R=15.23% P=100.00%
+    train:rep1: F1=0.2263 R=12.76% P=100.00%
+  -> TRAIN mean F1=0.2453 R=13.99% P=100.00%
+
+[trial 1] {'min_sigma': 1.2992642186624028, 'max_sigma': 2.6620480325305316, 'intensity_threshold': 0.42701814444901137, 'circular_threshold': 0.11029224714790123, 'max_displacement': 4.864594334728975, 'min_pulsation_frames': 13, 'intensity_variation_threshold': 0.09246782213565524}
+    train:rep0: F1=0.0866 R=4.53% P=100.00%
+    train:rep1: F1=0.1163 R=6.17% P=100.00%
+  -> TRAIN mean F1=0.1014 R=5.35% P=100.00%
+
+[trial 2] {'min_sigma': 0.2727374508106509, 'max_sigma': 1.0502135295603015, 'intensity_threshold': 0.32606056073988443, 'circular_threshold': 0.36237821581611895, 'max_displacement': 2.4437525838895207, 'min_pulsation_frames': 6, 'intensity_variation_threshold': 0.17237057894447588}
+    train:rep0: F1=0.0637 R=3.29% P=100.00%
+    train:rep1: F1=0.0163 R=0.82% P=100.00%
+  -> TRAIN mean F1=0.0400 R=2.06% P=100.00%
+
+[trial 3] {'min_sigma': 0.20924079097806275, 'max_sigma': 1.3764339456056545, 'intensity_threshold': 0.3415904608234229, 'circular_threshold': 0.32803499210851794, 'max_displacement': 4.033291826268561, 'min_pulsation_frames': 5, 'intensity_variation_threshold': 0.1528468876827223}
+    train:rep0: F1=0.1636 R=9.05% P=84.62%
+    train:rep1: F1=0.1439 R=7.82% P=90.48%
+  -> TRAIN mean F1=0.1538 R=8.44% P=87.55%
+
+[trial 4] {'min_sigma': 0.8886218532930636, 'max_sigma': 1.105276404703584, 'intensity_threshold': 0.4018862129753596, 'circular_threshold': 0.18526206184364577, 'max_displacement': 0.7927321684337578, 'min_pulsation_frames': 15, 'intensity_variation_threshold': 0.24312640661491186}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+[trial 5] {'min_sigma': 1.2125960221746916, 'max_sigma': 1.978909392564883, 'intensity_threshold': 0.27441802850159597, 'circular_threshold': 0.4421165132560785, 'max_displacement': 2.480686221828206, 'min_pulsation_frames': 4, 'intensity_variation_threshold': 0.14903538202225403}
+    train:rep0: F1=0.0082 R=0.41% P=100.00%
+    train:rep1: F1=0.0082 R=0.41% P=100.00%
+  -> TRAIN mean F1=0.0082 R=0.41% P=100.00%
+
+[trial 6] {'min_sigma': 0.05158278167282759, 'max_sigma': 3.2279612062363463, 'intensity_threshold': 0.31469499540000423, 'circular_threshold': 0.43126114217699096, 'max_displacement': 1.9026998424023494, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.15934205586865594}
+    train:rep0: F1=0.0163 R=0.82% P=66.67%
+    train:rep1: F1=0.0244 R=1.23% P=100.00%
+  -> TRAIN mean F1=0.0203 R=1.03% P=83.33%
+
+[trial 7] {'min_sigma': 0.27728168328829056, 'max_sigma': 3.4087538832936755, 'intensity_threshold': 0.44378320584027864, 'circular_threshold': 0.5697494707820946, 'max_displacement': 4.526723076924419, 'min_pulsation_frames': 10, 'intensity_variation_threshold': 0.23437484700462335}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+[trial 8] {'min_sigma': 0.13273875307787925, 'max_sigma': 1.0879485872574355, 'intensity_threshold': 0.2613068222276345, 'circular_threshold': 0.2626651653816322, 'max_displacement': 2.249047803602669, 'min_pulsation_frames': 6, 'intensity_variation_threshold': 0.21574750183038588}
+    train:rep0: F1=0.0163 R=0.82% P=100.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0082 R=0.41% P=50.00%
+
+[trial 9] {'min_sigma': 0.5351299900403839, 'max_sigma': 1.4399708416064703, 'intensity_threshold': 0.38567402078956214, 'circular_threshold': 0.17046211248738133, 'max_displacement': 4.109886413393179, 'min_pulsation_frames': 3, 'intensity_variation_threshold': 0.24737738732010345}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+[trial 10] {'min_sigma': 0.7704950355933128, 'max_sigma': 2.3399962469244593, 'intensity_threshold': 0.4923842776969664, 'circular_threshold': 0.5661451709558936, 'max_displacement': 0.5974256553391994, 'min_pulsation_frames': 10, 'intensity_variation_threshold': 0.05311895993169126}
+    train:rep0: F1=0.0482 R=2.47% P=100.00%
+    train:rep1: F1=0.0637 R=3.29% P=100.00%
+  -> TRAIN mean F1=0.0560 R=2.88% P=100.00%
+
+[trial 11] {'min_sigma': 0.5039140407958771, 'max_sigma': 1.7611226164428453, 'intensity_threshold': 0.3592967364030507, 'circular_threshold': 0.32172051411693436, 'max_displacement': 3.4418164036761016, 'min_pulsation_frames': 6, 'intensity_variation_threshold': 0.10844769310039729}
+    train:rep0: F1=0.3525 R=21.40% P=100.00%
+    train:rep1: F1=0.2766 R=16.05% P=100.00%
+  -> TRAIN mean F1=0.3146 R=18.72% P=100.00%
+
+[trial 12] {'min_sigma': 0.6149540006100314, 'max_sigma': 2.889103760401528, 'intensity_threshold': 0.4839765550306897, 'circular_threshold': 0.4752091519213957, 'max_displacement': 3.359795799319771, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.09207979880638492}
+    train:rep0: F1=0.0560 R=2.88% P=100.00%
+    train:rep1: F1=0.0560 R=2.88% P=100.00%
+  -> TRAIN mean F1=0.0560 R=2.88% P=100.00%
+
+[trial 13] {'min_sigma': 0.48771380089855554, 'max_sigma': 1.95271754131244, 'intensity_threshold': 0.3670005103014744, 'circular_threshold': 0.33032562634084267, 'max_displacement': 1.403736791832742, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.056211883839528826}
+    train:rep0: F1=0.7626 R=62.14% P=98.69%
+    train:rep1: F1=0.7538 R=60.49% P=100.00%
+  -> TRAIN mean F1=0.7582 R=61.32% P=99.35%
+
+[trial 14] {'min_sigma': 0.9765237047573919, 'max_sigma': 1.9380793305506534, 'intensity_threshold': 0.3681228817386659, 'circular_threshold': 0.2879737596132028, 'max_displacement': 3.2316256930244736, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.11086281551350838}
+    train:rep0: F1=0.0714 R=3.70% P=100.00%
+    train:rep1: F1=0.0714 R=3.70% P=100.00%
+  -> TRAIN mean F1=0.0714 R=3.70% P=100.00%
+
+[trial 15] {'min_sigma': 0.4650558406584023, 'max_sigma': 0.6036219335262882, 'intensity_threshold': 0.2958975057662129, 'circular_threshold': 0.25477274099129527, 'max_displacement': 1.4469324266240355, 'min_pulsation_frames': 12, 'intensity_variation_threshold': 0.11699331436108468}
+    train:rep0: F1=0.1158 R=6.17% P=93.75%
+    train:rep1: F1=0.1226 R=6.58% P=88.89%
+  -> TRAIN mean F1=0.1192 R=6.38% P=91.32%
+
+[trial 16] {'min_sigma': 0.7372458471543715, 'max_sigma': 1.9468573099822066, 'intensity_threshold': 0.3630815782194021, 'circular_threshold': 0.33957584205483365, 'max_displacement': 3.153193258305917, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.07589024536783034}[I 2026-08-01 00:23:50,563] Trial 16 finished with value: 0.2968404772425983 and parameters: {'min_sigma': 0.7372458471543715, 'max_sigma': 1.9468573099822066, 'intensity_threshold': 0.3630815782194021, 'circular_threshold': 0.33957584205483365, 'max_displacement': 3.153193258305917, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.07589024536783034}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:30:30,920] Trial 17 finished with value: 0.08991328859882955 and parameters: {'min_sigma': 0.3879555321410875, 'max_sigma': 2.3033575675400857, 'intensity_threshold': 0.3509835816619266, 'circular_threshold': 0.4982509529611884, 'max_displacement': 1.5676931739199502, 'min_pulsation_frames': 3, 'intensity_variation_threshold': 0.12961176342033834}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:34:08,322] Trial 18 finished with value: 0.21956521739130436 and parameters: {'min_sigma': 1.150987242519125, 'max_sigma': 2.2303617925982975, 'intensity_threshold': 0.39589013841085685, 'circular_threshold': 0.20631518146515387, 'max_displacement': 2.774508083411788, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.07977493378947378}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:37:54,614] Trial 19 finished with value: 0.0 and parameters: {'min_sigma': 0.7204125210857244, 'max_sigma': 1.5339571949038628, 'intensity_threshold': 0.29689979662687344, 'circular_threshold': 0.3803345572597037, 'max_displacement': 3.7555442802369816, 'min_pulsation_frames': 11, 'intensity_variation_threshold': 0.1807726717015523}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:41:31,492] Trial 20 finished with value: 0.09778179478537946 and parameters: {'min_sigma': 1.4710248244976993, 'max_sigma': 2.110910419661225, 'intensity_threshold': 0.37545000450767263, 'circular_threshold': 0.3150116316486297, 'max_displacement': 2.0046890937247057, 'min_pulsation_frames': 5, 'intensity_variation_threshold': 0.10469898665693826}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:45:05,037] Trial 21 finished with value: 0.3547599954175736 and parameters: {'min_sigma': 0.7162253066810876, 'max_sigma': 1.752412482100327, 'intensity_threshold': 0.3524433530556824, 'circular_threshold': 0.33181927151190255, 'max_displacement': 2.9562911780488843, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.07253938452512244}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:52:16,595] Trial 22 finished with value: 0.622955810417541 and parameters: {'min_sigma': 0.37965307511841345, 'max_sigma': 1.7123715547122567, 'intensity_threshold': 0.3349372248642062, 'circular_threshold': 0.2578722210326333, 'max_displacement': 3.064146759042806, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.06707707379407286}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 00:59:48,811] Trial 23 finished with value: 0.6124024690855012 and parameters: {'min_sigma': 0.37854549830361517, 'max_sigma': 1.6205489856514435, 'intensity_threshold': 0.3261702503911126, 'circular_threshold': 0.2536463764062282, 'max_displacement': 2.8870299487590487, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.06710041836375259}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 01:07:42,036] Trial 24 finished with value: 0.5161359285335101 and parameters: {'min_sigma': 0.37142637265586037, 'max_sigma': 1.6446023254966626, 'intensity_threshold': 0.32473853281672954, 'circular_threshold': 0.22884596140294786, 'max_displacement': 2.7389674026812707, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.05298689341354753}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 01:19:28,910] Trial 25 finished with value: 0.008097165991902836 and parameters: {'min_sigma': 0.01730173368785698, 'max_sigma': 2.571930642296861, 'intensity_threshold': 0.2994652516473608, 'circular_threshold': 0.13131643479476857, 'max_displacement': 1.0952611989063468, 'min_pulsation_frames': 11, 'intensity_variation_threshold': 0.06968502440331022}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 01:25:54,670] Trial 26 finished with value: 0.6798390844661323 and parameters: {'min_sigma': 0.39750879392681376, 'max_sigma': 1.2483014304841729, 'intensity_threshold': 0.33675043729534637, 'circular_threshold': 0.27258811732984245, 'max_displacement': 1.8404873071496761, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.08926358291348985}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 01:33:22,896] Trial 27 finished with value: 0.6825877192982457 and parameters: {'min_sigma': 0.1811624559595718, 'max_sigma': 0.5549365942715343, 'intensity_threshold': 0.40823783308348, 'circular_threshold': 0.28817543079631686, 'max_displacement': 1.8127601340968764, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.09136274165987951}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 01:40:48,013] Trial 28 finished with value: 0.48259160397961665 and parameters: {'min_sigma': 0.17832422383489396, 'max_sigma': 0.5519609023402199, 'intensity_threshold': 0.40947368811369306, 'circular_threshold': 0.29089186221090996, 'max_displacement': 1.6796873907374514, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.13343113282696142}. Best is trial 13 with value: 0.7582362082362082.
+[I 2026-08-01 01:44:00,977] Trial 29 finished with value: 0.0 and parameters: {'min_sigma': 0.5971748941602502, 'max_sigma': 0.8961666626754008, 'intensity_threshold': 0.4456230459314318, 'circular_threshold': 0.39932313986095713, 'max_displacement': 1.096447143135388, 'min_pulsation_frames': 10, 'intensity_variation_threshold': 0.09133722016729695}. Best is trial 13 with value: 0.7582362082362082.
+
+    train:rep0: F1=0.3356 R=20.16% P=100.00%
+    train:rep1: F1=0.2581 R=14.81% P=100.00%
+  -> TRAIN mean F1=0.2968 R=17.49% P=100.00%
+
+[trial 17] {'min_sigma': 0.3879555321410875, 'max_sigma': 2.3033575675400857, 'intensity_threshold': 0.3509835816619266, 'circular_threshold': 0.4982509529611884, 'max_displacement': 1.5676931739199502, 'min_pulsation_frames': 3, 'intensity_variation_threshold': 0.12961176342033834}
+    train:rep0: F1=0.0791 R=4.12% P=100.00%
+    train:rep1: F1=0.1008 R=5.35% P=86.67%
+  -> TRAIN mean F1=0.0899 R=4.73% P=93.33%
+
+[trial 18] {'min_sigma': 1.150987242519125, 'max_sigma': 2.2303617925982975, 'intensity_threshold': 0.39589013841085685, 'circular_threshold': 0.20631518146515387, 'max_displacement': 2.774508083411788, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.07977493378947378}
+    train:rep0: F1=0.2391 R=13.58% P=100.00%
+    train:rep1: F1=0.2000 R=11.11% P=100.00%
+  -> TRAIN mean F1=0.2196 R=12.35% P=100.00%
+
+[trial 19] {'min_sigma': 0.7204125210857244, 'max_sigma': 1.5339571949038628, 'intensity_threshold': 0.29689979662687344, 'circular_threshold': 0.3803345572597037, 'max_displacement': 3.7555442802369816, 'min_pulsation_frames': 11, 'intensity_variation_threshold': 0.1807726717015523}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+[trial 20] {'min_sigma': 1.4710248244976993, 'max_sigma': 2.110910419661225, 'intensity_threshold': 0.37545000450767263, 'circular_threshold': 0.3150116316486297, 'max_displacement': 2.0046890937247057, 'min_pulsation_frames': 5, 'intensity_variation_threshold': 0.10469898665693826}
+    train:rep0: F1=0.1089 R=5.76% P=100.00%
+    train:rep1: F1=0.0866 R=4.53% P=100.00%
+  -> TRAIN mean F1=0.0978 R=5.14% P=100.00%
+
+[trial 21] {'min_sigma': 0.7162253066810876, 'max_sigma': 1.752412482100327, 'intensity_threshold': 0.3524433530556824, 'circular_threshold': 0.33181927151190255, 'max_displacement': 2.9562911780488843, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.07253938452512244}
+    train:rep0: F1=0.3854 R=23.87% P=100.00%
+    train:rep1: F1=0.3241 R=19.34% P=100.00%
+  -> TRAIN mean F1=0.3548 R=21.60% P=100.00%
+
+[trial 22] {'min_sigma': 0.37965307511841345, 'max_sigma': 1.7123715547122567, 'intensity_threshold': 0.3349372248642062, 'circular_threshold': 0.2578722210326333, 'max_displacement': 3.064146759042806, 'min_pulsation_frames': 8, 'intensity_variation_threshold': 0.06707707379407286}
+    train:rep0: F1=0.6204 R=97.53% P=45.49%
+    train:rep1: F1=0.6255 R=97.94% P=45.95%
+  -> TRAIN mean F1=0.6230 R=97.74% P=45.72%
+
+[trial 23] {'min_sigma': 0.37854549830361517, 'max_sigma': 1.6205489856514435, 'intensity_threshold': 0.3261702503911126, 'circular_threshold': 0.2536463764062282, 'max_displacement': 2.8870299487590487, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.06710041836375259}
+    train:rep0: F1=0.6070 R=96.30% P=44.32%
+    train:rep1: F1=0.6178 R=97.12% P=45.30%
+  -> TRAIN mean F1=0.6124 R=96.71% P=44.81%
+
+[trial 24] {'min_sigma': 0.37142637265586037, 'max_sigma': 1.6446023254966626, 'intensity_threshold': 0.32473853281672954, 'circular_threshold': 0.22884596140294786, 'max_displacement': 2.7389674026812707, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.05298689341354753}
+    train:rep0: F1=0.5121 R=95.47% P=34.99%
+    train:rep1: F1=0.5201 R=98.35% P=35.36%
+  -> TRAIN mean F1=0.5161 R=96.91% P=35.17%
+
+[trial 25] {'min_sigma': 0.01730173368785698, 'max_sigma': 2.571930642296861, 'intensity_threshold': 0.2994652516473608, 'circular_threshold': 0.13131643479476857, 'max_displacement': 1.0952611989063468, 'min_pulsation_frames': 11, 'intensity_variation_threshold': 0.06968502440331022}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0162 R=0.82% P=50.00%
+  -> TRAIN mean F1=0.0081 R=0.41% P=25.00%
+
+[trial 26] {'min_sigma': 0.39750879392681376, 'max_sigma': 1.2483014304841729, 'intensity_threshold': 0.33675043729534637, 'circular_threshold': 0.27258811732984245, 'max_displacement': 1.8404873071496761, 'min_pulsation_frames': 9, 'intensity_variation_threshold': 0.08926358291348985}
+    train:rep0: F1=0.6711 R=62.55% P=72.38%
+    train:rep1: F1=0.6886 R=64.61% P=73.71%
+  -> TRAIN mean F1=0.6798 R=63.58% P=73.04%
+
+[trial 27] {'min_sigma': 0.1811624559595718, 'max_sigma': 0.5549365942715343, 'intensity_threshold': 0.40823783308348, 'circular_threshold': 0.28817543079631686, 'max_displacement': 1.8127601340968764, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.09136274165987951}
+    train:rep0: F1=0.6568 R=64.20% P=67.24%
+    train:rep1: F1=0.7083 R=69.96% P=71.73%
+  -> TRAIN mean F1=0.6826 R=67.08% P=69.49%
+
+[trial 28] {'min_sigma': 0.17832422383489396, 'max_sigma': 0.5519609023402199, 'intensity_threshold': 0.40947368811369306, 'circular_threshold': 0.29089186221090996, 'max_displacement': 1.6796873907374514, 'min_pulsation_frames': 7, 'intensity_variation_threshold': 0.13343113282696142}
+    train:rep0: F1=0.4606 R=30.04% P=98.65%
+    train:rep1: F1=0.5046 R=33.74% P=100.00%
+  -> TRAIN mean F1=0.4826 R=31.89% P=99.32%
+
+[trial 29] {'min_sigma': 0.5971748941602502, 'max_sigma': 0.8961666626754008, 'intensity_threshold': 0.4456230459314318, 'circular_threshold': 0.39932313986095713, 'max_displacement': 1.096447143135388, 'min_pulsation_frames': 10, 'intensity_variation_threshold': 0.09133722016729695}
+    train:rep0: F1=0.0000 R=0.00% P=0.00%
+    train:rep1: F1=0.0000 R=0.00% P=0.00%
+  -> TRAIN mean F1=0.0000 R=0.00% P=0.00%
+
+================================================================================
+STAGE 2/2 - JUDGE ON REAL: scoring top 6 configs on the real movie
+(select on VAL band, report held-out TEST band)
+================================================================================
+
+[candidate 1/6] trial 13 (sim F1=0.7582)
+    val band x(0, 256): F1=0.4663 R=34.09% P=73.77% (pos=132 dets=61)
+    test band x(256, 512): F1=0.5591 R=46.85% P=69.33% (pos=111 dets=75)
+
+[candidate 2/6] trial 27 (sim F1=0.6826)
+    val band x(0, 256): F1=0.2844 R=22.73% P=37.97% (pos=132 dets=79)
+    test band x(256, 512): F1=0.4306 R=40.54% P=45.92% (pos=111 dets=98)
+
+[candidate 3/6] trial 26 (sim F1=0.6798)
+    val band x(0, 256): F1=0.2011 R=14.39% P=33.33% (pos=132 dets=57)
+    test band x(256, 512): F1=0.3810 R=32.43% P=46.15% (pos=111 dets=78)
+
+[candidate 4/6] trial 22 (sim F1=0.6230)
+    val band x(0, 256): F1=0.7524 R=88.64% P=65.36% (pos=132 dets=179)
+    test band x(256, 512): F1=0.7143 R=90.09% P=59.17% (pos=111 dets=169)
+
+[candidate 5/6] trial 23 (sim F1=0.6124)
+    val band x(0, 256): F1=0.7075 R=78.79% P=64.20% (pos=132 dets=162)
+    test band x(256, 512): F1=0.7046 R=89.19% P=58.24% (pos=111 dets=170)
+
+[candidate 6/6] trial 24 (sim F1=0.5161)
+    val band x(0, 256): F1=0.6667 R=74.24% P=60.49% (pos=132 dets=162)
+    test band x(256, 512): F1=0.6447 R=79.28% P=54.32% (pos=111 dets=162)
+
+================================================================================
+Selected trial 22: real-VAL F1=0.7524 -> real-TEST F1=0.7143
+Final parameters:
+  min_sigma: 0.37965307511841345
+  max_sigma: 1.7123715547122567
+  intensity_threshold: 0.3349372248642062
+  circular_threshold: 0.2578722210326333
+  max_displacement: 3.064146759042806
+  min_pulsation_frames: 8
+  intensity_variation_threshold: 0.06707707379407286
+
+GENERALIZATION (mean F-beta):
+  SIM (train): 0.6230
+  REAL val:    0.7524  (R=88.64% P=65.36%)
+  REAL test:   0.7143  (R=90.09% P=59.17%)
+================================================================================
+
+Results saved to C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\experiments\real_calibrated_sim_transfer\optimization_results_full.json
+
+==============================================================================
+T6 RESULT -- arm 'full'
+==============================================================================
+  real VAL  band F1 0.7524   (selection band)
+  real TEST band F1 0.7143   R 90.1% P 59.2%
+  vs BT-sim-tuned 0.256 | direct-real 0.847 | target 0.70
+  T6: PASS   (3.28 h)
+  results -> C:\Users\NahuelJimenezPol\Desktop\Const\smTIRF_GUI_SCP_Sim_Param\smTIRF_GUI_SCP_Sim_Param\experiments\real_calibrated_sim_transfer\optimization_results_full.json
